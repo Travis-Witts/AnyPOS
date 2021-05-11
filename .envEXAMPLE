@@ -1,2 +1,3 @@
-db_name=database name
-db_pass=database password
+DB_NAME=database name
+DB_USER=database username
+DB_PASSWORD=database password
