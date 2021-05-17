@@ -19,7 +19,7 @@ const Navbar: React.FC = () => (
       <li className="nav-item">
         <a href="/" className="nav-link">
           <Tag className="link-img" />
-          <span className="link-text">Sales</span>
+          <span className="link-text">New Sale</span>
         </a>
       </li>
       <li className="nav-item">

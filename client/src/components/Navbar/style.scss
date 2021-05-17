@@ -14,35 +14,7 @@ $bg-icon: #7e5799;
     opacity: 1;
   }
 }
-
-@-moz-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 @-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-o-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-ms-keyframes fadeIn {
   0% {
     opacity: 0;
   }
@@ -81,6 +53,7 @@ $bg-icon: #7e5799;
   display: none;
   margin-left: 1rem;
   letter-spacing: 0.1ch;
+  white-space: nowrap;
 }
 
 .link-img {
@@ -94,6 +67,15 @@ $bg-icon: #7e5799;
   .link-img {
     color: $bg-icon;
     fill: $bg-icon;
+    transition: 0.3s;
+  }
+}
+
+.nav-link:not(:hover) {
+  .link-text,
+  .link-img {
+    color: $text-primary;
+    fill: $text-primary;
     transition: 0.3s;
   }
 }
@@ -115,11 +97,8 @@ $bg-icon: #7e5799;
   .sidebar:hover {
     width: 13rem;
     .link-text {
-      animation: fadeIn 3s;
-      -webkit-animation: fadeIn 3s;
-      // -moz-animation: fadeIn 3s;
-      // -o-animation: fadeIn 3s;
-      // -ms-animation: fadeIn 3s;
+      animation: fadeIn 5s;
+      -webkit-animation: fadeIn 5s;
       display: block;
     }
     transition: 0.7s;
