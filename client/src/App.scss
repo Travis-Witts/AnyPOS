@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
 $text-primary: #b6b6b6;
 $text-secondary: #ececec;
 $bg-primary: #23232e;
@@ -10,7 +12,7 @@ $bg-body: #454545;
 }
 
 body {
-  color: black;
+  color: $text-primary;
   background-color: $bg-body;
   margin: 0;
   padding: 0;
@@ -30,7 +32,6 @@ body::-webkit-scrollbar-thumb {
 @media only screen and (min-width: 601px) {
   .main {
     margin-left: 5rem;
-    padding: 1rem;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -38,3 +39,42 @@ body::-webkit-scrollbar-thumb {
     margin: 0;
   }
 }
+
+// Sales page
+
+.sales-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.invoice-col {
+  padding-left: 1rem;
+  padding-top: 1rem;
+}
+
+.invoice-header {
+  background-color: $bg-primary;
+  text-align: center;
+  height: 5vh;
+  border-radius: 20px 20px 0 0;
+}
+
+.current-invoice {
+  background-color: $text-secondary;
+  height: 75vh;
+  width: 40rem;
+  overflow: auto;
+}
+
+.invoice-footer {
+  padding-top: 1rem;
+  background-color: $bg-primary;
+  height: 15vh;
+  border-radius: 0 0 20px 20px;
+}
+
+.sales-btns {
+  display: flex;
+  flex-direction: column;
+}
+
