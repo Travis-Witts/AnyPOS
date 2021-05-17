@@ -1,9 +1,11 @@
 import React from 'react';
 import './style.scss';
-import { ReactComponent as Login } from '../Icons/login.svg';
-import { ReactComponent as Register } from '../Icons/register.svg';
+import { ReactComponent as Profile } from '../Icons/profile.svg';
 import { ReactComponent as Logout } from '../Icons/logout.svg';
 import { ReactComponent as POS } from '../Icons/pos.svg';
+import { ReactComponent as Tag } from '../Icons/tag.svg';
+import { ReactComponent as Settings } from '../Icons/settings.svg';
+import { ReactComponent as List } from '../Icons/list.svg';
 
 const Navbar: React.FC = () => (
   <div className="sidebar">
@@ -16,14 +18,26 @@ const Navbar: React.FC = () => (
       </li>
       <li className="nav-item">
         <a href="/" className="nav-link">
-          <Login className="link-img" />
-          <span className="link-text">Sign In</span>
+          <Tag className="link-img" />
+          <span className="link-text">Sales</span>
         </a>
       </li>
       <li className="nav-item">
         <a href="/" className="nav-link">
-          <Register className="link-img" />
-          <span className="link-text">Register</span>
+          <List className="link-img" />
+          <span className="link-text">Edit</span>
+        </a>
+      </li>
+      <li className="nav-item">
+        <a href="/" className="nav-link">
+          <Profile className="link-img" />
+          <span className="link-text">Profile</span>
+        </a>
+      </li>
+      <li id="settings" className="nav-item">
+        <a href="/" className="nav-link">
+          <Settings className="link-img" />
+          <span className="link-text">Settings</span>
         </a>
       </li>
       <li id="logout" className="nav-item">
