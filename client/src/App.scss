@@ -62,16 +62,10 @@ body::-webkit-scrollbar-thumb {
 .current-invoice {
   background-color: $text-secondary;
   height: 75vh;
-  width: 40rem;
+  width: 30rem;
   overflow: auto;
 }
 
-.invoice-footer {
-  padding-top: 1rem;
-  background-color: $bg-primary;
-  height: 15vh;
-  border-radius: 0 0 20px 20px;
-}
 
 .sales-btns {
   display: flex;
