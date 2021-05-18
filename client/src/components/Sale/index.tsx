@@ -2,6 +2,7 @@ import React from 'react';
 
 const Sale: React.FC = () => (
   <div className="sale-container">
+    <div className="item-col" />
     <div className="sales-row">
       <div className="invoice-col">
           <div className="invoice-header">Invoice lines:</div>
