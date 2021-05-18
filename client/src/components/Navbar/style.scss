@@ -1,9 +1,4 @@
-$text-primary: #ececec;
-$text-secondary: #ececec;
-$bg-primary: #23232e;
-$bg-secondary: #141418;
-$bg-logout: #ff4561;
-$bg-icon: #7e5799;
+@import '../../App.scss';
 
 // Sidebar animation
 @keyframes fadeIn {
@@ -92,7 +87,15 @@ $bg-icon: #7e5799;
     width: 100%;
   }
 
-  // Logout button down the bottom
+  .sidebar:hover ~ .main {
+    margin-left: 13rem;
+    transition: 0.7s;
+  }
+
+  .sidebar:not(:hover) ~ .main {
+    margin-left: 5rem;
+    transition: 0.7s;
+  }
 
   .sidebar:hover {
     width: 13rem;

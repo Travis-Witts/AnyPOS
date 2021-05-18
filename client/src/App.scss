@@ -5,6 +5,8 @@ $text-secondary: #ececec;
 $bg-primary: #23232e;
 $bg-secondary: #141418;
 $bg-body: #454545;
+$bg-logout: #ff4561;
+$bg-icon: #7e5799;
 
 :root {
   font-size: 16px;
@@ -52,58 +54,3 @@ body::-webkit-scrollbar-thumb {
 
 // Sales page
 
-.sale-container {
-  display:flex;
-  flex-direction: row;
-}
-
-.sales-row {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  flex-direction: row;
-}
-
-.item-col {
-  text-align: center;
-  justify-content: center;
-  height: 200vh;
-  border: 1px black dotted;
-  width: 100%;
-  margin-right:31rem;
-}
-
-.items-header {
-  color: $text-secondary;
-  font-size: 32px;
-  font-weight: bold;
-  background-color: $bg-primary;
-  border-radius: 20px;
-  line-height: 2;
-}
-
-.invoice-col {
-  padding-left: 1rem;
-  padding-top: 1rem;
-}
-
-.invoice-header {
-  background-color: $bg-primary;
-  text-align: center;
-  height: 5vh;
-  border-radius: 20px 20px 0 0;
-}
-
-.current-invoice {
-  background-color: $text-secondary;
-  height: 90vh;
-  width: 30rem;
-  overflow: auto;
-}
-
-.sale-btn {
-  margin: .5rem;
-  height: 10rem !important;
-  width: 15rem;
-}
