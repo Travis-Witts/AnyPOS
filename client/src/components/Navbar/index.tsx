@@ -25,7 +25,7 @@ const Navbar: React.FC = () => (
       <li className="nav-item">
         <a href="/" className="nav-link">
           <List className="link-img" />
-          <span className="link-text">Edit Stock</span>
+          <span className="link-text">Receipts</span>
         </a>
       </li>
       <li className="nav-item">

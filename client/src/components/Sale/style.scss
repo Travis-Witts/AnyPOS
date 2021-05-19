@@ -1,4 +1,9 @@
+@import '../../../node_modules/bulma/sass/base/_all.sass';
+@import '../../../node_modules/bulma/sass/utilities/_all.sass';
+@import '../../../node_modules/bulma/sass/elements/_all.sass';
+@import '../../../node_modules/bulma/sass/form/_all.sass';
 @import '../../App.scss';
+
 
 .sale-container {
   display: flex;
@@ -72,7 +77,7 @@
 
 .sale-btn {
   margin: 0.5rem;
-  height: 10rem !important;
+  height: 10rem;
   width: 15rem;
 }
 
@@ -125,6 +130,6 @@
 }
 
 .pay-form {
-  color: $text-primary !important;
+  color: $text-primary;
   cursor: default;
 }
