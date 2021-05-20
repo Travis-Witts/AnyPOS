@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bulma-components';
 import './style.scss';
+import { ReactComponent as Chevron } from '../Icons/chevron.svg';
 
 const arr: number[] = [];
 
@@ -27,6 +28,7 @@ const Sale: React.FC = () => (
     <div className="sales-row">
       <div className="invoice-col">
         <div className="invoice-header">
+          <Chevron className="chevron" />
           <h1>New Sale</h1>
         </div>
         <div className="current-invoice" />

@@ -13,7 +13,7 @@
 .sales-row {
   position: fixed;
   bottom: 0;
-  right: 0.5rem;
+  right: 0;
   display: flex;
   flex-direction: row;
   height: 100vh;
@@ -63,7 +63,7 @@
   color: $text-secondary;
   font-size: 32px;
   font-weight: bold;
-  background-color: $bg-secondary;
+  background-color: $bg-primary;
   height: 5rem;
 }
 
@@ -132,4 +132,12 @@
 .pay-form {
   color: $text-primary;
   cursor: default;
+}
+
+.chevron {
+  fill: $text-primary;
+  position: absolute;
+  left: 1rem;
+  top: 1.5rem;
+  cursor: pointer;
 }
