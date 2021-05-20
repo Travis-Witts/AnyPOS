@@ -1,0 +1,127 @@
+@import '../../../node_modules/bulma/sass/base/_all.sass';
+@import '../../../node_modules/bulma/sass/utilities/_all.sass';
+@import '../../../node_modules/bulma/sass/elements/_all.sass';
+@import '../../../node_modules/bulma/sass/form/_all.sass';
+@import '../../App.scss';
+
+
+
+.sale-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.sales-row {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  background-color: $bg-primary;
+}
+
+.current-invoice::-webkit-scrollbar-track {
+  background: $text-secondary;
+}
+
+.current-invoice::-webkit-scrollbar-thumb {
+  background: $bg-icon;
+  border-radius: 10px;
+}
+
+.current-invoice {
+  background-color: $text-secondary;
+  width: 30rem;
+  overflow-y: scroll;
+  height: 50%;
+}
+
+.sale-btn {
+  margin: 0.5rem;
+  height: 10rem;
+  width: 15rem;
+}
+
+.invoice-header {
+  background-color: $bg-secondary;
+  text-align: center;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.invoice-header h1 {
+  font-size: 32px;
+  color: $text-secondary;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+.invoice-footer {
+  background-color: $bg-primary;
+  height: 15rem;
+  color: $text-secondary;
+}
+
+.pay-btn {
+  margin: 1.5rem;
+  width: 90%;
+}
+
+.payment-row {
+  display: flex;
+  flex-direction: row;
+  margin-right: 1.5rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  white-space: nowrap;
+}
+
+.discount-form {
+  margin-left: 4rem;
+}
+
+.email-form {
+    margin-left: 6.7rem;
+}
+
+.gst-form {
+  margin-left: 3.5rem;
+}
+
+.total-form {
+  margin-left: 3rem;
+}
+
+.pay-form {
+  color: $text-primary;
+  cursor: default;
+}
+
+.chevron {
+  fill: $text-primary;
+  position: absolute;
+  left: 1rem;
+  top: 1.5rem;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1350px) {
+    .sales-row {
+      width: 100vw;
+    }
+    .invoice-col {
+        width:100%;
+    }
+    .current-invoice {
+      width: 100%;
+    }
+    .invoice-header {
+        width: 100%;
+    }
+    .invoice-footer {
+        width: 100%
+    }
+  }
