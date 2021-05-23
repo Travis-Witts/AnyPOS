@@ -1,8 +1,8 @@
 const Store = require('./Store');
 const User = require('./User');
-// const Category = require('./Category');
-// const Product = require('./Product');
-// const Transaction = require('./Transaction')
+const Item = require('./Item');
+const Stock = require('./Stock');
+const Transaction = require('./Transaction')
 
 // Has relationship:
 
@@ -11,24 +11,24 @@ User.hasOne(Store, {
     onDelete: "CASCADE"
 });
 
-// Store.hasMany(Category, {
-//     foreignKey: "store_id",
-//     onDelete: "CASCADE"
-// });
+Store.hasMany(Item, {
+    foreignKey: "store_id",
+    onDelete: "CASCADE"
+});
 
-// Category.hasMany(Product, {
-//     foreignKey: "category_id",
-//     onDelete: "CASCADE"
-// });
+Item.hasMany(Stock, {
+    foreignKey: "Item_id",
+    onDelete: "CASCADE"
+});
 
-// Store.hasMany(Transaction, {
-//     foreignKey: "store_id",
-//     onDelete: "CASCADE"
-// });
+Store.hasMany(Transaction, {
+    foreignKey: "store_id",
+    onDelete: "CASCADE"
+});
 
-// Transaction.hasMany(Product, {
-//     foreignKey: "transaction_id"
-// });
+Transaction.hasMany(Stock, {
+    foreignKey: "transaction_id"
+});
 
 // Belongs to:
 
@@ -37,24 +37,24 @@ Store.belongsTo(User, {
     as: "owner"
 });
 
-// Category.belongsTo(Store, {
-//     foreignKey: "store_id"
-// });
+Item.belongsTo(Store, {
+    foreignKey: "store_id"
+});
 
-// Product.belongsTo(Category, {
-//     foreignKey: "category_id",
-//     as: "stock"
-// });
+Stock.belongsTo(Item, {
+    foreignKey: "Item_id",
+    as: "stock"
+});
 
-// Transaction.belongsTo(Store, {
-//     foreignKey: "store_id",
-//     as: "invoices"
-// });
+Transaction.belongsTo(Store, {
+    foreignKey: "store_id",
+    as: "invoices"
+});
 
-// Product.belongsTo(Transaction, {
-//     foreignKey: "transaction_id",
-//     as: "productLines"
-// })
+Stock.belongsTo(Transaction, {
+    foreignKey: "transaction_id",
+    as: "StockLines"
+})
 
 
-module.exports = { User, Store };
+module.exports = { User, Store, Item, Stock, Transaction };

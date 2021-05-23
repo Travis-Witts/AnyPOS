@@ -1,28 +1,31 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Transaction extends Model {}
+class Stock extends Model {}
 
-Transaction.init(
+Stock.init(
   {
-    transaction_id: {
+    stock_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    store_id: {
+    item_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "Transaction",
-        key: "Transaction_id",
+        model: "item",
+        key: "item_id",
       },
     },
-    date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
+    transaction_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "transaction",
+        key: "transaction_id",
+      },
     },
   },
   {
@@ -30,8 +33,8 @@ Transaction.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "transaction",
+    modelName: "stock",
   }
 );
 
-module.exports = Transaction;
+module.exports = Stock;
