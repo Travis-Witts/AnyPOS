@@ -19,6 +19,11 @@ Transaction.init(
         key: "Transaction_id",
       },
     },
+    total = {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
     date: {
         type: DataTypes.DATE,
         allowNull: false,
