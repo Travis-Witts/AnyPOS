@@ -1,37 +1,44 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Stock extends Model {}
+class Product extends Model {}
 
-Stock.init(
+Product.init(
   {
-    stock_id: {
+    Product_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    product_id: {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        len: [1, 50],
+      },
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    store_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "product",
-        key: "product_id", 
+        model: "store",
+        key: "store_id",
       },
     },
-    date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-    }
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "stock",
+    modelName: "product",
   }
 );
 
-module.exports = Stock;
+module.exports = Product;

@@ -5,7 +5,7 @@ exports.restockItem = async (item_id) => {
   } catch (error) {}
 };
 
-exports.sellItem = async (transaction_id) => {
+exports.sellStock = async (transaction_id) => {
   try {
   } catch (error) {}
 };

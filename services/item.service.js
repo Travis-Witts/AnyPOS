@@ -1,16 +1,16 @@
-const { Item } = require("../models");
+const { Product } = require("../models");
 
-exports.getAllItems = async (store_id) => {
+exports.getAllProducts = async (store_id) => {
   try {
   } catch (error) {}
 };
 
-exports.createItem = async (store_id) => {
+exports.createProduct = async (store_id) => {
   try {
   } catch (error) {}
 };
 
-exports.deleteItem = async (item_id) => {
+exports.deleteProduct = async (product_id) => {
   try {
   } catch (error) {}
 };

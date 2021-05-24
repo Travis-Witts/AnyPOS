@@ -5,7 +5,3 @@ exports.createSale = async (store_id) => {
   } catch (error) {}
 };
 
-exports.addToSale = async (item_id) => {
-  try {
-  } catch (error) {}
-};
