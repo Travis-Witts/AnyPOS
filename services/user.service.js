@@ -1,16 +1,36 @@
 const { User } = require("../models");
 
-exports.login = async (user) => {
+exports.getUser = async (email) => {
   try {
-  } catch (error) {}
+    const user = await User.findOne({
+      where: {
+        email: email,
+      },
+    });
+    return user;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-exports.register = async (user) => {
+exports.checkPassword = async (user, password) => {
   try {
-  } catch (error) {}
+    const validPassword = await user.checkPassword(password);
+    return validPassword;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-exports.logout = async (user) => {
+exports.createUser = async (name, password, email) => {
   try {
-  } catch (error) {}
+    const user = await User.create({
+      name: name,
+      email: email,
+      password: password,
+    });
+    return user;
+  } catch (error) {
+    console.error(error);
+  }
 };

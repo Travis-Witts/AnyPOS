@@ -1,0 +1,51 @@
+const UserService = require("../services/user.service");
+
+exports.login = async (req, res, next) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  try {
+    const user = await UserService.getUser(email);
+
+    if (!user) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password. Please try again!" });
+      return;
+    }
+
+    const validPassword = await UserService.checkPassword(user, password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password. Please try again!" });
+      return;
+    }
+    req.session.save(() => {
+      req.session.user_id = user.user_id;
+      req.session.loggedIn = true;
+      res
+        .status(200)
+        .json({ user: user, message: "You are now logged in!" });
+    });
+  } catch (error) {}
+};
+
+exports.register = async (req, res, next) => {
+    const name = req.body.name,
+    const email = req.body.email,
+    const password = req.body.password
+    try {
+        const newUser = await UserService.createUser(name, password, email);
+        req.session.save(() => {
+            req.session.user_id = user.user_id;
+            req.session.loggedIn = true;
+            res
+              .status(200)
+              .json({ user: user, message: "You are now logged in!" });
+          });
+    } catch (error) {
+        
+    }
+}
