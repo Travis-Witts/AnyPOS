@@ -6,10 +6,10 @@ class Product extends Model {}
 Product.init(
   {
     product_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,
@@ -27,7 +27,7 @@ Product.init(
       type: DataTypes.INTEGER,
     },
     store_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       references: {
         model: "store",

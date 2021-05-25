@@ -1,9 +1,8 @@
 const { Product } = require("../models");
 
-exports.createProduct = async (product_id, name, price, store_id) => {
+exports.createProduct = async (name, price, store_id) => {
   try {
     const newProduct = Product.create({
-      product_id: product_id,
       name: name,
       price: price,
       store_id: store_id,

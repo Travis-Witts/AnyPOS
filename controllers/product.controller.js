@@ -1,15 +1,12 @@
 const ProductService = require("../services/product.service");
-const { v4: uuidv4 } = require("uuid");
 
 exports.createProduct = async (req, res, next) => {
-  const product_id = uuidv4();
   const name = req.body.name;
   const price = req.body.price;
   const store_id = req.body.store_id;
 
   try {
     const product = await ProductService.createProduct(
-      product_id,
       name,
       price,
       store_id

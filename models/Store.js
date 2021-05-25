@@ -6,10 +6,10 @@ class Store extends Model {}
 Store.init(
   {
     store_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,
@@ -24,7 +24,7 @@ Store.init(
       allowNull: false,
     },
     user_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
           model: 'user',

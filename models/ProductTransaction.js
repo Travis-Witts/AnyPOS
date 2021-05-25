@@ -6,13 +6,13 @@ class ProductTransaction extends Model {}
 ProductTransaction.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
     },
     product_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       references: {
         model: "product",
@@ -20,7 +20,7 @@ ProductTransaction.init(
       },
     },
     transaction_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       references: {
         model: "transaction",
