@@ -53,16 +53,23 @@ exports.getOne = async (product_id) => {
   }
 };
 
-exports.editStock = async (product_id) => {
+exports.editStock = async (product_id, value) => {
   try {
     const stock = await Product.findOne({
       where: {
-        product_id: product_id
-      }
-    })
-    return stock.
-  } catch (error) {
-    
-  }
-}
+        product_id: product_id,
+      },
+    });
+    const newQuantity = stock.quantity + value;
 
+    const updatedStock = await Product.update({
+      quantity: newQuantity,
+      where: {
+        product_id: product_id,
+      },
+    });
+    return updatedStock;
+  } catch (error) {
+    console.error(error);
+  }
+};
