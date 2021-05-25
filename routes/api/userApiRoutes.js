@@ -5,3 +5,5 @@ const UserController = require('../../controllers/user.controller');
 router.post("/", UserController.register)
 // login
 router.post("/login", UserController.login);
+// logout
+router.post("/logout", UserController.logout)

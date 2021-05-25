@@ -14,7 +14,7 @@ exports.createSale = async (store_id) => {
 exports.updateTotal = async ({ transaction_id, value }) => {
   try {
     const updatedSale = await Transaction.update({
-      total = value,
+      total: value,
       where: {
         transaction_id: transaction_id,
       },

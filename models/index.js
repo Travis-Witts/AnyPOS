@@ -1,9 +1,8 @@
 const Store = require("./Store");
 const User = require("./User");
 const Product = require("./Product");
-const Stock = require("./Stock");
 const Transaction = require("./Transaction");
-const StockTransaction = require("./StockTransaction");
+const ProductTransaction = require("./ProductTransaction");
 
 // Has relationship:
 
@@ -17,11 +16,6 @@ Store.hasMany(Product, {
   onDelete: "CASCADE",
 });
 
-Product.hasMany(Stock, {
-  foreignKey: "Item_id",
-  onDelete: "CASCADE",
-});
-
 Store.hasMany(Transaction, {
   foreignKey: "store_id",
   onDelete: "CASCADE",
@@ -31,30 +25,21 @@ Store.hasMany(Transaction, {
 
 Store.belongsTo(User, {
   foreignKey: "user_id",
-  as: "owner",
 });
 
 Product.belongsTo(Store, {
   foreignKey: "store_id",
-  as: "product",
-});
-
-Stock.belongsTo(Product, {
-  foreignKey: "Item_id",
-  as: "stock",
 });
 
 Transaction.belongsTo(Store, {
   foreignKey: "store_id",
-  as: "invoices",
 });
 
-Stock.belongsTo(Transaction, {
+Product.belongsToMany(Transaction, {
   through: {
-    model: StockTransaction,
+    model: ProductTransaction,
     unique: true,
   },
-  as: "invoiceLine",
 });
 
-module.exports = { User, Store, Product, Stock, Transaction, StockTransaction };
+module.exports = { User, Store, Product, Transaction, ProductTransaction };

@@ -1,9 +1,9 @@
 const UserService = require("../services/user.service");
+const { v4: uuidv4 } = require('uuid');
 
 exports.login = async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
-
   try {
     const user = await UserService.getUser(email);
 
@@ -33,11 +33,12 @@ exports.login = async (req, res, next) => {
 };
 
 exports.register = async (req, res, next) => {
+    const user_id = uuidv4();
     const name = req.body.name,
     const email = req.body.email,
     const password = req.body.password
     try {
-        const newUser = await UserService.createUser(name, password, email);
+        const newUser = await UserService.createUser(user_id, name, password, email);
         req.session.save(() => {
             req.session.user_id = user.user_id;
             req.session.loggedIn = true;
@@ -48,4 +49,14 @@ exports.register = async (req, res, next) => {
     } catch (error) {
         
     }
+}
+
+exports.logout = async (req, res, next) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
 }
