@@ -1,25 +1,66 @@
 const ProductService = require("../services/product.service");
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 
-exports.getInstockProducts = async (req, res, next) => {
-    const store_id = req.body.store_id;
+exports.createProduct = async (req, res, next) => {
+  const product_id = uuidv4();
+  const name = req.body.name;
+  const price = req.body.price;
+  const store_id = req.body.store_id;
 
-    try {
-        const products = await ProductService.getAll(store_id);
-        const inStock = products.filter(product => product.)
-        return products;
-    } catch (error) {
-        
-    }
-}
+  try {
+    const product = await ProductService.createProduct(
+      product_id,
+      name,
+      price,
+      store_id
+    );
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+exports.deleteProduct = async (req, res, next) => {
+  const product_id = req.body.product_id;
+
+  try {
+    const deletedProduct = await ProductService.deleteProduct(product_id);
+    res.status(200).json(deletedProduct);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
 
 exports.getAllProducts = async (req, res, next) => {
-    const store_id = req.body.store_id;
+  const store_id = req.body.store_id;
 
-    try {
-        const products = await ProductService.getAll(store_id);
-        return products;
-    } catch (error) {
-        console.error(error);
-    }
-}
+  try {
+    const products = await ProductService.getAll(store_id);
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+exports.getOneProduct = async (req, res, next) => {
+  const product_id = req.params.id;
+
+  try {
+    const product = await ProductService.getOne(product_id);
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+exports.editStock = async (req, res, next) => {
+  const product_id = req.params.id;
+  const value = req.body.value;
+
+  try {
+    const updatedProduct = await ProductService.editStock(product_id, value);
+    res.status(200).json(updatedProduct);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};

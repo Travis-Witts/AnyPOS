@@ -29,7 +29,9 @@ exports.login = async (req, res, next) => {
         .status(200)
         .json({ user: user, message: "You are now logged in!" });
     });
-  } catch (error) {}
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
 };
 
 exports.register = async (req, res, next) => {
@@ -47,7 +49,7 @@ exports.register = async (req, res, next) => {
               .json({ user: user, message: "You are now logged in!" });
           });
     } catch (error) {
-        
+        res.status(400).json(error.message);
     }
 }
 
