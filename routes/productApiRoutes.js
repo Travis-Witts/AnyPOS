@@ -15,3 +15,5 @@ router.get("/:id", ProductController.getOneProduct);
 
 // Edit Stock
 router.put("/:id", ProductController.editStock);
+
+module.exports =router;

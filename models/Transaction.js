@@ -19,7 +19,7 @@ Transaction.init(
         key: "Transaction_id",
       },
     },
-    total = {
+    total: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0,

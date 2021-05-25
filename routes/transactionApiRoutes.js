@@ -12,3 +12,5 @@ router.get("/:id", TransactionController.getOne);
 
 // Update Transaction Total
 router.put("/:id", TransactionController.updateTotal)
+
+module.exports =router;

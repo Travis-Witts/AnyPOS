@@ -38,7 +38,6 @@ Transaction.belongsTo(Store, {
 Product.belongsToMany(Transaction, {
   through: {
     model: ProductTransaction,
-    unique: true,
   },
 });
 

@@ -5,7 +5,7 @@ const session = require('express-session');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-// const routes = require("./routes");
+const routes = require("./routes");
 const app = express();
 
 const sess = {
