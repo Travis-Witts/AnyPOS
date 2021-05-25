@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Store } = require("../models");
 
 exports.getUser = async (email) => {
   try {
@@ -6,6 +6,9 @@ exports.getUser = async (email) => {
       where: {
         email: email,
       },
+      include: {
+        model: Store,
+      }
     });
     return user;
   } catch (error) {

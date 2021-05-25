@@ -13,13 +13,13 @@ exports.createStore = async ({ name, description, user_id }) => {
   }
 };
 
-exports.editStore = async ({ name, description, user_id }) => {
+exports.editStore = async (name, description, store_id) => {
   try {
     const updatedStore = await Store.update({
       name: name,
       description: description,
       where: {
-        user_id: user_id,
+        store_id: store_id,
       },
     });
     return updatedStore;
