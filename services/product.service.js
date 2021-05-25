@@ -1,4 +1,4 @@
-const { Product, ProductTransaction } = require("../models");
+const { Product } = require("../models");
 
 exports.createProduct = async (product_id, name, price, store_id) => {
   try {
@@ -53,11 +53,16 @@ exports.getOne = async (product_id) => {
   }
 };
 
-exports.sellStock = async (stock) => {
+exports.editStock = async (product_id) => {
   try {
-    const sold = await ProductTransaction.bulkCreate(stock);
-    return sold;
+    const stock = await Product.findOne({
+      where: {
+        product_id: product_id
+      }
+    })
+    return stock.
   } catch (error) {
-    console.error(error);
+    
   }
-};
+}
+

@@ -23,6 +23,9 @@ Product.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    quantity: {
+      type: DataTypes.INTEGER,
+    },
     store_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
