@@ -6,6 +6,7 @@ import LoginButton from '../LoginButton';
 
 const LoginContainer: React.FC = () => {
   const [loginState, setLoginState] = useState<string | undefined>('');
+  const [loginToken, setLoginToken] = useState<string | undefined>('');
   // Register info references
   const regEmailRef = useRef<HTMLInputElement>(null);
   const regPasswordRef = useRef<HTMLInputElement>(null);
@@ -42,7 +43,8 @@ const LoginContainer: React.FC = () => {
     };
 
     const loggedUser = await axios.post('/user/login', loginUser);
-    
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    setLoginToken(loggedUser.data.user.user_id);
   };
 
   return (
