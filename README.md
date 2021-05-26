@@ -16,6 +16,7 @@
 ## Technologies used
 - TypeScript
 - JavaScript
+- SASS
 - React
 - Express
 - MySQL
