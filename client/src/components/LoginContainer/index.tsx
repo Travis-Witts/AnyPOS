@@ -4,7 +4,6 @@ import axios from 'axios';
 import { ReactComponent as Logo } from '../Icons/cash-register.svg';
 import LoginButton from '../LoginButton';
 
-
 const LoginContainer: React.FC = () => {
   const [loginState, setLoginState] = useState<string | undefined>('');
   // Register info references
@@ -22,26 +21,28 @@ const LoginContainer: React.FC = () => {
     setLoginState(id);
   };
 
-  const registerHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
+  const registerHandler = async (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
     event.preventDefault();
     const newUser = {
       name: userInputRef.current?.value,
       email: regEmailRef.current?.value,
       password: regPasswordRef.current?.value,
-      storeName: storeInputRef.current?.value
-    }
-    const registeredUser = await axios.post("/user/", newUser)
+      storeName: storeInputRef.current?.value,
+    };
+    const registeredUser = await axios.post('/user/', newUser);
   };
 
   const loginHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const loginUser = {
       email: emailInputRef.current?.value,
-      password: passwordInputRef.current?.value
-    }
+      password: passwordInputRef.current?.value,
+    };
 
-    const loggedUser = await axios.post("/user/login", loginUser)
-
+    const loggedUser = await axios.post('/user/login', loginUser);
+    
   };
 
   return (
@@ -59,6 +60,7 @@ const LoginContainer: React.FC = () => {
           ))}
         {loginState === 'Login' && (
           <div className="login-col">
+            <h1>Login:</h1>
             <div>
               <p>Email:</p>
               <input
@@ -82,6 +84,7 @@ const LoginContainer: React.FC = () => {
         )}
         {loginState === 'Register' && (
           <div>
+            <h1>Register:</h1>
             <div>
               <p>Store Name:</p>
               <input

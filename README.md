@@ -16,6 +16,7 @@
 ## Technologies used
 - TypeScript
 - JavaScript
+- ESLint AirBnB Configuration
 - SASS
 - React
 - Express

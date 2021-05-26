@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import './App.scss';
-// import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import LoginContainer from './components/LoginContainer';
-// import Sale from './components/Sale';
-// import Receipts from './components/Receipts';
+import Sale from './components/Sale';
+import Receipts from './components/Receipts';
 
-const App: React.FC = () => (
-  <div className="App">
-    {/* <Navbar /> */}
-    {/* <div className="main"> */}
-    <LoginContainer />
-      {/* <Sale /> */}
-      {/* <Receipts /> */}
-      {/* </div> */}
-  </div>
-);
+const App: React.FC = () => {
+  const [loggedIn, setLoggedIn] = useState('');
+
+  if (!loggedIn) {
+    return <LoginContainer />;
+  }
+  return (
+    <div className="App">
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/sale">
+            <Sale />
+          </Route>
+
+          <Route path="/receipt">
+            <Receipts />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
+  );
+};
 
 export default App;
