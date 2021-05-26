@@ -22,6 +22,7 @@ Store.init(
     description: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: "Default store description"
     },
     user_id: {
         type: DataTypes.STRING,

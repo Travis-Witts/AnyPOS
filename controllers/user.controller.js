@@ -36,12 +36,12 @@ exports.login = async (req, res, next) => {
 };
 
 exports.register = async (req, res, next) => {
-    const { name, email, password, storeName, description} = req.body;
+    const { name, email, password, storeName} = req.body;
 
     try {
         const newUser = await UserService.createUser(name, password, email);
         const user_id = newUser.user_id;
-        const newShop = await StoreService.createStore(storeName, description, user_id);
+        const newShop = await StoreService.createStore(storeName, user_id);
         req.session.save(() => {
             req.session.user_id = user_id;
             req.session.store_id = newShop.store_id;
