@@ -1,0 +1,10 @@
+@import '../../App.scss';
+
+.btns {
+  color: $text-primary;
+  background-color: transparent;
+  width: 15rem;
+  height: 2rem;
+  cursor: pointer;
+  border-radius: 20px;
+}

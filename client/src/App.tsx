@@ -1,18 +1,18 @@
 import React from 'react';
 import './App.scss';
-import Navbar from './components/Navbar';
-// import LoginContainer from './components/LoginContainer';
+// import Navbar from './components/Navbar';
+import LoginContainer from './components/LoginContainer';
 // import Sale from './components/Sale';
-import Receipts from './components/Receipts';
+// import Receipts from './components/Receipts';
 
 const App: React.FC = () => (
   <div className="App">
-    <Navbar />
-    {/* <LoginContainer /> */}
-    <div className="main">
+    {/* <Navbar /> */}
+    {/* <div className="main"> */}
+    <LoginContainer />
       {/* <Sale /> */}
-      <Receipts />
-      </div>
+      {/* <Receipts /> */}
+      {/* </div> */}
   </div>
 );
 
