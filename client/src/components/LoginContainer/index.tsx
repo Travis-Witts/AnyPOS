@@ -30,7 +30,6 @@ const LoginContainer: React.FC = () => {
       password: regPasswordRef.current?.value,
       storeName: storeInputRef.current?.value
     }
-    console.log("working")
     const registeredUser = await axios.post("/user/", newUser)
   };
 

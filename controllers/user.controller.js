@@ -40,10 +40,9 @@ exports.register = async (req, res, next) => {
     try {
       console.log("working-serverside")
         const newUser = await UserService.createUser(name, password, email);
-        const user_id = newUser.user_id;
-        const newShop = await StoreService.createStore(storeName, user_id);
+        const newShop = await StoreService.createStore(storeName, newUser.user_id);
         req.session.save(() => {
-            req.session.user_id = user_id;
+            req.session.user_id = newUser.user_id;
             req.session.store_id = newShop.store_id;
             req.session.loggedIn = true;
             res
