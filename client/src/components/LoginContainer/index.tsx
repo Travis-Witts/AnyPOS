@@ -4,9 +4,12 @@ import axios from 'axios';
 import { ReactComponent as Logo } from '../Icons/cash-register.svg';
 import LoginButton from '../LoginButton';
 
-const LoginContainer: React.FC = () => {
+type LoginProps = {
+  setLogin: (value: any) => void;
+}
+
+const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
   const [loginState, setLoginState] = useState<string | undefined>('');
-  const [loginToken, setLoginToken] = useState<string | undefined>('');
   // Register info references
   const regEmailRef = useRef<HTMLInputElement>(null);
   const regPasswordRef = useRef<HTMLInputElement>(null);
@@ -33,6 +36,8 @@ const LoginContainer: React.FC = () => {
       storeName: storeInputRef.current?.value,
     };
     const registeredUser = await axios.post('/user/', newUser);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    Props.setLogin(registeredUser.data.user.user_id);
   };
 
   const loginHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -44,7 +49,7 @@ const LoginContainer: React.FC = () => {
 
     const loggedUser = await axios.post('/user/login', loginUser);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    setLoginToken(loggedUser.data.user.user_id);
+    Props.setLogin(loggedUser.data.user.user_id);
   };
 
   return (

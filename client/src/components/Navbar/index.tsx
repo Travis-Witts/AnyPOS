@@ -8,10 +8,16 @@ import { ReactComponent as Tag } from '../Icons/tag.svg';
 import { ReactComponent as Settings } from '../Icons/settings.svg';
 import { ReactComponent as List } from '../Icons/list.svg';
 
-const Navbar: React.FC = () => {
+type LoginProps = {
+  setLogin: (value: any) => void;
+}
+
+
+const Navbar: React.FC<LoginProps> = (Props: LoginProps) => {
   const logoutHandler = async (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     const loggedOutUser = await axios.post('/user/logout');
+    Props.setLogin('')
   };
   return (
     <div className="sidebar">

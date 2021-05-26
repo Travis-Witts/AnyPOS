@@ -10,12 +10,12 @@ const App: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState('');
 
   if (!loggedIn) {
-    return <LoginContainer />;
+    return <LoginContainer setLogin={setLoggedIn} />;
   }
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        <Navbar setLogin={setLoggedIn}/>
         <Switch>
           <Route path="/sale">
             <Sale />
