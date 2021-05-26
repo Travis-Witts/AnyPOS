@@ -12,7 +12,7 @@ ProductTransaction.init(
       primaryKey: true,
     },
     product_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
       allowNull: false,
       references: {
         model: "product",
@@ -20,7 +20,7 @@ ProductTransaction.init(
       },
     },
     transaction_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
       allowNull: false,
       references: {
         model: "transaction",
@@ -41,7 +41,7 @@ ProductTransaction.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "producttransaction",
+    modelName: "ptransaction",
   }
 );
 

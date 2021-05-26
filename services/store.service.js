@@ -1,10 +1,11 @@
 const { Store } = require("../models");
 
-exports.createStore = async ({ name, description, user_id }) => {
+exports.createStore = async ({ name, user_id }) => {
   try {
+    console.log(name);
+    console.log(user_id)
     const newStore = await Store.create({
       name: name,
-      description: description,
       user_id: user_id,
     });
     return newStore;

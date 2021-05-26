@@ -27,7 +27,7 @@ Product.init(
       type: DataTypes.INTEGER,
     },
     store_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
       allowNull: false,
       references: {
         model: "store",

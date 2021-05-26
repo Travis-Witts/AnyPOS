@@ -1,5 +1,5 @@
-const Store = require("./Store");
 const User = require("./User");
+const Store = require("./Store");
 const Product = require("./Product");
 const Transaction = require("./Transaction");
 const ProductTransaction = require("./ProductTransaction");

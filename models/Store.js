@@ -25,7 +25,7 @@ Store.init(
       defaultValue: "Default store description"
     },
     user_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.UUID,
         allowNull: false,
         references: {
           model: 'user',

@@ -10,5 +10,4 @@ router.use('/store', storeRoutes);
 router.use('/transaction', transactionRoutes);
 router.use('/user', userRoutes);
 
-
 module.exports = router;

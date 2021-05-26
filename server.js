@@ -23,15 +23,18 @@ app.use(session(sess));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(routes);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// app.use(routes);
 
 
 
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => {
+    console.log('listening on: ' + PORT);
+  });
 });

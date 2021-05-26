@@ -25,7 +25,7 @@ exports.checkPassword = async (user, password) => {
   }
 };
 
-exports.createUser = async (user_id, name, password, email) => {
+exports.createUser = async (name, password, email) => {
   try {
     const user = await User.create({
       name: name,

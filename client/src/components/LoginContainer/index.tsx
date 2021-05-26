@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
 import './style.scss';
+import axios from 'axios';
 import { ReactComponent as Logo } from '../Icons/cash-register.svg';
 import LoginButton from '../LoginButton';
-import registerUser from "../../utils/API";
+
 
 const LoginContainer: React.FC = () => {
   const [loginState, setLoginState] = useState<string | undefined>('');
@@ -21,7 +22,7 @@ const LoginContainer: React.FC = () => {
     setLoginState(id);
   };
 
-  const registerHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const registerHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const newUser = {
       name: userInputRef.current?.value,
@@ -29,16 +30,19 @@ const LoginContainer: React.FC = () => {
       password: regPasswordRef.current?.value,
       storeName: storeInputRef.current?.value
     }
-    registerUser(newUser)
-
+    console.log("working")
+    const registeredUser = await axios.post("/user/", newUser)
   };
 
-  const loginHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const loginHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    const LoginUser = {
+    const loginUser = {
       email: emailInputRef.current?.value,
       password: passwordInputRef.current?.value
     }
+
+    const loggedUser = await axios.post("/user/login", loginUser)
+
   };
 
   return (
