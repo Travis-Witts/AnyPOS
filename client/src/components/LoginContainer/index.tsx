@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { useRef, useState } from 'react';
 import './style.scss';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { ReactComponent as Logo } from '../Icons/cash-register.svg';
 import LoginButton from '../LoginButton';
 
 type LoginProps = {
-  setLogin: (value: any) => void;
-}
+  setLogin: (value: string) => void;
+};
 
 const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
   const [loginState, setLoginState] = useState<string | undefined>('');
@@ -35,8 +36,8 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
       password: regPasswordRef.current?.value,
       storeName: storeInputRef.current?.value,
     };
-    const registeredUser = await axios.post('/user/', newUser);
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+
+    const registeredUser: AxiosResponse = await axios.post('/user/', newUser);
     Props.setLogin(registeredUser.data.user.user_id);
   };
 
@@ -46,9 +47,7 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
       email: emailInputRef.current?.value,
       password: passwordInputRef.current?.value,
     };
-
     const loggedUser = await axios.post('/user/login', loginUser);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     Props.setLogin(loggedUser.data.user.user_id);
   };
 
@@ -73,7 +72,7 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
               <input
                 type="text"
                 className="form-control"
-                id="nameInput"
+                id="emailLoginInput"
                 placeholder="Please Enter Your Email"
                 ref={emailInputRef}
               />
@@ -81,7 +80,7 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
               <input
                 type="text"
                 className="form-control"
-                id="nameInput"
+                id="passwordLoginInput"
                 placeholder="Please Enter Your Password"
                 ref={passwordInputRef}
               />
@@ -97,7 +96,7 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
               <input
                 type="text"
                 className="form-control"
-                id="nameInput"
+                id="storeInput"
                 placeholder="Please Enter Store Name"
                 ref={storeInputRef}
               />
@@ -105,7 +104,7 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
               <input
                 type="text"
                 className="form-control"
-                id="nameInput"
+                id="userInput"
                 placeholder="Please Enter User Name"
                 ref={userInputRef}
               />
@@ -113,7 +112,7 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
               <input
                 type="email"
                 className="form-control"
-                id="nameInput"
+                id="emailInput"
                 placeholder="Please Enter Your Email"
                 ref={regEmailRef}
               />
@@ -121,7 +120,7 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
               <input
                 type="password"
                 className="form-control"
-                id="nameInput"
+                id="passwordInput"
                 placeholder="Please Enter Your Password"
                 ref={regPasswordRef}
               />

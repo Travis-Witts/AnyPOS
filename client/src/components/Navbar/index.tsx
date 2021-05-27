@@ -17,7 +17,7 @@ type LoginProps = {
 const Navbar: React.FC<LoginProps> = (Props: LoginProps) => {
   const logoutHandler = async (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    const loggedOutUser = await axios.post('/user/logout');
+    await axios.post('/user/logout');
     Props.setLogin('')
   };
   return (
