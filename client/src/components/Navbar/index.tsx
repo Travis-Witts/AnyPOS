@@ -10,7 +10,7 @@ import { ReactComponent as Settings } from '../Icons/settings.svg';
 import { ReactComponent as List } from '../Icons/list.svg';
 
 type LoginProps = {
-  setLogin: (value: any) => void;
+  setLogin: (value: string) => void;
 }
 
 
@@ -30,7 +30,7 @@ const Navbar: React.FC<LoginProps> = (Props: LoginProps) => {
           </a>
         </li>
         <li className="nav-item">
-          <NavLink exact to="/sale" className="nav-link">
+          <NavLink exact to="/" className="nav-link">
             <Tag className="link-img" />
             <span className="link-text">New Sale</span>
           </NavLink>
@@ -42,7 +42,7 @@ const Navbar: React.FC<LoginProps> = (Props: LoginProps) => {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink exact to="/" className="nav-link">
+          <NavLink exact to="/profile" className="nav-link">
             <Profile className="link-img" />
             <span className="link-text">Profile</span>
           </NavLink>

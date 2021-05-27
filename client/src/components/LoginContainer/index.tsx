@@ -78,7 +78,7 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
               />
               <p>Password: </p>
               <input
-                type="text"
+                type="password"
                 className="form-control"
                 id="passwordLoginInput"
                 placeholder="Please Enter Your Password"

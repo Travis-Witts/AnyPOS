@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useEffect, useState } from 'react';
 import ScaleLoader from "react-spinners/ScaleLoader";
 import axios from 'axios';
@@ -9,6 +8,11 @@ import LoginContainer from './components/LoginContainer';
 import Sale from './components/Sale';
 import Receipts from './components/Receipts';
 
+const defaults = {
+  ignoreVoid: true,
+  ignoreIIFE: false,
+};
+
 const App: React.FC = () => {
   const [userIdLogin, setLoggedIn] = useState('');
   const [storeIdLogin, setStore] = useState('');
@@ -16,7 +20,6 @@ const App: React.FC = () => {
 
   const setAuth = async () => {
     setLoading(true);
-    console.log('working');
     const userDetails = await axios.get('/user/auth');
     setLoggedIn(userDetails.data.userId);
     setStore(userDetails.data.storeId);
@@ -24,7 +27,7 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    setAuth();
+    void setAuth();
   }, []);
   if( loadingState) {
     return (<div className="spinner-container"><ScaleLoader /> </div>)
@@ -37,11 +40,11 @@ const App: React.FC = () => {
         <Router>
           <Navbar setLogin={setLoggedIn} />
           <Switch>
-            <Route path="/sale">
+            <Route exact path="/">
               <Sale />
             </Route>
 
-            <Route path="/receipt">
+            <Route exact path="/receipt">
               <Receipts />
             </Route>
           </Switch>
