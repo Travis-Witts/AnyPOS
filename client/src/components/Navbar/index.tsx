@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.scss';
 import axios from 'axios';
+import { NavLink } from "react-router-dom";
 import { ReactComponent as Profile } from '../Icons/profile.svg';
 import { ReactComponent as Logout } from '../Icons/logout.svg';
 import { ReactComponent as POS } from '../Icons/pos.svg';
@@ -29,28 +30,28 @@ const Navbar: React.FC<LoginProps> = (Props: LoginProps) => {
           </a>
         </li>
         <li className="nav-item">
-          <a href="/sale" className="nav-link">
+          <NavLink exact to="/sale" className="nav-link">
             <Tag className="link-img" />
             <span className="link-text">New Sale</span>
-          </a>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <a href="/receipt" className="nav-link">
+          <NavLink to="/receipt" className="nav-link">
             <List className="link-img" />
             <span className="link-text">Receipts</span>
-          </a>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <a href="/" className="nav-link">
+          <NavLink exact to="/" className="nav-link">
             <Profile className="link-img" />
             <span className="link-text">Profile</span>
-          </a>
+          </NavLink>
         </li>
         <li id="settings" className="nav-item">
-          <a href="/" className="nav-link">
+          <NavLink exact to="/settings" className="nav-link">
             <Settings className="link-img" />
             <span className="link-text">Settings</span>
-          </a>
+          </NavLink>
         </li>
         <li id="logout" className="nav-item">
           <a href="/" onClick={logoutHandler} className=" nav-link">

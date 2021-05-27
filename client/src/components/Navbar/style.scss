@@ -57,6 +57,14 @@
   fill: $text-primary;
 }
 
+.nav-link.active {
+  .link-text,
+  .link-img {
+    color: $bg-icon;
+    fill: $bg-icon;
+  }
+}
+
 .nav-link:hover {
   .link-text,
   .link-img {
@@ -65,7 +73,6 @@
     transition: 0.3s;
   }
 }
-
 .nav-link:not(:hover) {
   .link-text,
   .link-img {
