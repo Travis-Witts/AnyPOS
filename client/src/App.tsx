@@ -7,11 +7,7 @@ import Navbar from './components/Navbar';
 import LoginContainer from './components/LoginContainer';
 import Sale from './components/Sale';
 import Receipts from './components/Receipts';
-
-const defaults = {
-  ignoreVoid: true,
-  ignoreIIFE: false,
-};
+import AccountContainer from './components/AccountContainer/AccountContainer';
 
 const App: React.FC = () => {
   const [userIdLogin, setLoggedIn] = useState('');
@@ -46,6 +42,10 @@ const App: React.FC = () => {
 
             <Route exact path="/receipt">
               <Receipts />
+            </Route>
+
+            <Route exact path="/profile">
+              <AccountContainer />
             </Route>
           </Switch>
         </Router>
