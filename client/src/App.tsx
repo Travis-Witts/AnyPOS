@@ -7,7 +7,7 @@ import Navbar from './components/Navbar';
 import LoginContainer from './components/LoginContainer';
 import Sale from './components/Sale';
 import Receipts from './components/Receipts';
-import AccountContainer from './components/AccountContainer/AccountContainer';
+import ProfileContainer from './components/ProfileContainer';
 
 const App: React.FC = () => {
   const [userIdLogin, setLoggedIn] = useState('');
@@ -45,7 +45,7 @@ const App: React.FC = () => {
             </Route>
 
             <Route exact path="/profile">
-              <AccountContainer />
+              <ProfileContainer />
             </Route>
           </Switch>
         </Router>

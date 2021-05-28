@@ -41,16 +41,16 @@ const Navbar: React.FC<LoginProps> = (Props: LoginProps) => {
             <span className="link-text">Receipts</span>
           </NavLink>
         </li>
-        <li className="nav-item">
-          <NavLink exact to="/profile" className="nav-link">
+        <li  id="store" className="nav-item">
+          <NavLink exact to="/store" className="nav-link">
             <Profile className="link-img" />
-            <span className="link-text">Profile</span>
+            <span className="link-text">Store</span>
           </NavLink>
         </li>
-        <li id="settings" className="nav-item">
-          <NavLink exact to="/settings" className="nav-link">
+        <li className="nav-item">
+          <NavLink exact to="/profile" className="nav-link">
             <Settings className="link-img" />
-            <span className="link-text">Settings</span>
+            <span className="link-text">Profile</span>
           </NavLink>
         </li>
         <li id="logout" className="nav-item">

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './style.scss';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
 
 const AccountContainer: React.FC = () => {
