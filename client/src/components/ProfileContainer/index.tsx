@@ -15,7 +15,7 @@ const AccountContainer: React.FC = () => {
       name: storeNameRef.current?.innerText,
       description: descriptionRef.current?.innerText,
     };
-    const newStore = await axios.put('/store', newStoreBody);
+    await axios.put('/store', newStoreBody);
   };
 
   const setShop = async () => {

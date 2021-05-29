@@ -6,12 +6,15 @@ type IInputText = {
   classes: string;
 };
 
-const StaticInput: React.FC<IInputText> = ({ text, label, classes }: IInputText) => (
-    <form>
-        <label htmlFor={label}>{label}:  $</label>
-          <input className={classes} id={label} type="text" value={text} disabled />
-    </form>
-
+const StaticInput: React.FC<IInputText> = ({
+  text,
+  label,
+  classes,
+}: IInputText) => (
+  <form>
+    <label htmlFor={label}>{label}: $</label>
+    <input className={classes} id={label} type="text" value={text} disabled />
+  </form>
 );
 
 export default StaticInput;
