@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ScaleLoader from "react-spinners/ScaleLoader";
+import ScaleLoader from 'react-spinners/ScaleLoader';
 import axios from 'axios';
 import './App.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -26,36 +26,40 @@ const App: React.FC = () => {
   useEffect(() => {
     void setAuth();
   }, []);
-  if( loadingState) {
-    return (<div className="spinner-container"><ScaleLoader /> </div>)
-  }
-    if (!userIdLogin) {
-      return <LoginContainer setLogin={setLoggedIn} />;
-    }
+  if (loadingState) {
     return (
-      <div className="App">
-        <Router>
-          <Navbar setLogin={setLoggedIn} />
-          <Switch>
-            <Route exact path="/">
-              <Sale />
-            </Route>
-
-            <Route exact path="/receipt">
-              <Receipts />
-            </Route>
-
-            <Route exact path="/edit">
-              <EditContainer />
-            </Route>
-
-            <Route exact path="/profile">
-              <ProfileContainer />
-            </Route>
-          </Switch>
-        </Router>
+      <div className="spinner-container">
+        <ScaleLoader />{' '}
       </div>
     );
+  }
+  if (!userIdLogin) {
+    return <LoginContainer setLogin={setLoggedIn} />;
+  }
+  return (
+    <div className="App">
+      <Router>
+        <Navbar setLogin={setLoggedIn} />
+        <Switch>
+          <Route exact path="/">
+            <Sale />
+          </Route>
+
+          <Route exact path="/receipt">
+            <Receipts />
+          </Route>
+
+          <Route exact path="/edit">
+            <EditContainer storeId={storeIdLogin} />
+          </Route>
+
+          <Route exact path="/profile">
+            <ProfileContainer />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
+  );
 };
 
 export default App;

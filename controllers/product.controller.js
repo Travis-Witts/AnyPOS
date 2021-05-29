@@ -3,12 +3,13 @@ const ProductService = require("../services/product.service");
 exports.createProduct = async (req, res, next) => {
   const name = req.body.name;
   const price = req.body.price;
-  const store_id = req.body.store_id;
-
+  const quantity = req.body.quantity;
+  const store_id = req.session.store_id;
   try {
     const product = await ProductService.createProduct(
       name,
       price,
+      quantity,
       store_id
     );
     res.status(200).json(product);
