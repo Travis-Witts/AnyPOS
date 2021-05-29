@@ -17,8 +17,13 @@ $bg-icon: #7e5799;
   font-family: 'Open Sans';
 }
 #root {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+}
+
+.app {
+  height: 100%;
+  width: 100%;
 }
 
 body {
@@ -26,8 +31,8 @@ body {
   background-color: $bg-body;
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
 }
 
 body::-webkit-scrollbar {
