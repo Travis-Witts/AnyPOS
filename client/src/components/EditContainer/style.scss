@@ -1,0 +1,29 @@
+@import '../../App.scss';
+
+
+.product-container-row {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.new-product-col,
+.product-list-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 5rem;
+  margin-left: 5rem;
+  height: 40%;
+  width: 40%;
+}
+.product,
+.product-list {
+  height: 100%;
+  width: 100%;
+  border: 2px black dotted;
+  overflow-wrap: break-word;
+  align-items: center;
+}
