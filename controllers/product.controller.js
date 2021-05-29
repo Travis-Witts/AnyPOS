@@ -19,7 +19,8 @@ exports.createProduct = async (req, res, next) => {
 };
 
 exports.deleteProduct = async (req, res, next) => {
-  const product_id = req.params.id;
+  const product_id = req.body.id;
+  console.log(product_id)
 
   try {
     const deletedProduct = await ProductService.deleteProduct(product_id);
@@ -30,7 +31,7 @@ exports.deleteProduct = async (req, res, next) => {
 };
 
 exports.getAllProducts = async (req, res, next) => {
-  const store_id = req.body.store_id;
+  const store_id = req.session.store_id;
 
   try {
     const products = await ProductService.getAll(store_id);
@@ -52,7 +53,7 @@ exports.getOneProduct = async (req, res, next) => {
 };
 
 exports.editStock = async (req, res, next) => {
-  const product_id = req.params.id;
+  const product_id = req.body.id;
   const value = req.body.value;
 
   try {
