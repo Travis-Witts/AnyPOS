@@ -36,11 +36,11 @@ exports.getOne = async (req, res, next) => {
 };
 
 exports.updateTotal = async (req, res, next) => {
-  const transaction_id = req.params.id;
+  const transaction_id = req.body.transaction_id;
 
   try {
-    const invoiceLines = ProductTransactionService.getTransactionLines(transaction_id);
-    const value = await transactionSum(invoiceLines);
+    const invoiceLines = await ProductTransactionService.getTransactionLines(transaction_id);
+    const value = transactionSum(invoiceLines);
     const updatedTransaction = await TransactionService.updateTotal(
       transaction_id,
       value
@@ -50,3 +50,15 @@ exports.updateTotal = async (req, res, next) => {
     res.status(404).json(error.message);
   }
 };
+
+exports.getAllDaily = async (req, res, next) => {
+  const store_id = req.session.store_id;
+
+  try {
+    const dailySales = await ProductTransactionService.getAllDaily(store_id);
+    dailySales.dailyTotal = transactionSum(dailySales);
+    res.status(200).json(dailySales);
+  } catch (error) {
+    res.status(403).json(error);
+  }
+}

@@ -50,3 +50,20 @@ exports.getAll = async (store_id) => {
     console.error(error);
   }
 };
+
+exports.getAllDaily = async (store_id) => {
+  const yesterday = ((d) => new Date(d.setDate(d.getDate() - 1)))(new Date());
+  const today = new Date();
+  try {
+    const transactions = await Transaction.findAll({
+      where: {
+        date: {
+          $between: [yesterday, today],
+        },
+      },
+    });
+    return transactions;
+  } catch (error) {
+    console.log(error);
+  }
+};
