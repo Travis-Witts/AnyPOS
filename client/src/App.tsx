@@ -4,10 +4,11 @@ import axios from 'axios';
 import './App.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import LoginContainer from './components/LoginContainer';
 import Sale from './components/Sale';
 import Receipts from './components/Receipts';
+import LoginContainer from './components/LoginContainer';
 import ProfileContainer from './components/ProfileContainer';
+import EditContainer from './components/EditContainer';
 
 const App: React.FC = () => {
   const [userIdLogin, setLoggedIn] = useState('');
@@ -42,6 +43,10 @@ const App: React.FC = () => {
 
             <Route exact path="/receipt">
               <Receipts />
+            </Route>
+
+            <Route exact path="/edit">
+              <EditContainer />
             </Route>
 
             <Route exact path="/profile">
