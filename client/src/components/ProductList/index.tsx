@@ -8,6 +8,7 @@ type IProduct = {
   price: number | undefined;
   quantity: number | undefined;
   product_id: string | undefined;
+  onUpdate: () => void;
 };
 
 const ProductList: React.FC = () => {
@@ -16,25 +17,31 @@ const ProductList: React.FC = () => {
   const getProducts = async () => {
     const products = await axios.get('/product');
     setProducts(products.data);
-    console.log(products.data)
   };
 
   useEffect(() => {
     void getProducts();
   }, []);
   return (
-    <div>
+    <div className="product-table-container">
       {productsState.length ? (
-          <ul className="list-group">
+          <table className="product-table">
+          <tr className="product-table-headings">
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+          </tr>
             {productsState.map((product: IProduct) => (
               <EditProduct
+              onUpdate = {getProducts}
               product_id={product.product_id}
                 name={product.name}
                 price={product.price}
                 quantity={product.quantity}
               />
             ))}
-          </ul>
+          </table>
       ) : (
         <h4>No Products to display.</h4>
       )}

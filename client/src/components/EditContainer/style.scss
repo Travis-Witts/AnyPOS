@@ -1,5 +1,17 @@
 @import '../../App.scss';
 
+.main {
+  height: 100%;
+  width: 100%;
+}
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;               
+  background-color:#FFFF00;
+  height: 1px;
+}
 
 .product-container-row {
   height: 100%;
@@ -14,8 +26,48 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 5rem;
-  margin-left: 5rem;
-  height: 90%;
-  width: 90%;
+  margin-right: 4rem;
+  margin-left: 4rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  height: 80%;
+  width: 80%;
+  background-color: $bg-secondary;
+  color: $text-primary;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.product-list-col {
+  overflow-y: scroll;
+}
+.product-list-col::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+.product-list-col::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+.product-list-col::-webkit-scrollbar-thumb {
+  background: #7e5799;
+}
+
+
+.product-table, .product-table-container, .container  {
+  height: 100%;
+  width: 100%
+}
+.product-table-headings {
+  width: 100%;
+  color: $text-primary;
+}
+
+.product-input {
+  background-color: $bg-icon;
+}
+
+.product-row {
+  height: 100%;
+  width: 100%;
 }

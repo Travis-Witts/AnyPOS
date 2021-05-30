@@ -29,30 +29,49 @@ const EditContainer: React.FC<IEditProps> = ({ storeId }: IEditProps) => {
   return (
     <div className="main">
       <div className="container">
-        <div className="product-container-row row">
-          <div className="new-product-col col-md-4">
+        <div className="product-container-row cols">
+          <div className="product-list-col col">
+            <h1>Product List: </h1>
+            <div className="cols">
+              Search for a Product: <input className="input-col" type="text" />
+            </div>
+            <ProductList />
+          </div>
+          <div className="new-product-col col">
             {' '}
-            <h1 className="row">New Product:</h1>
+            <h1 className="cols">New Product:</h1>
             <div className="product container">
-              <div className="row">
+              <div className="cols">
                 <h3>Name:</h3>{' '}
-                <div contentEditable="true" ref={productNameRef}>
+                <div
+                  className="product-input"
+                  contentEditable="true"
+                  ref={productNameRef}
+                >
                   {' '}
                 </div>
               </div>
-              <div className="row">
+              <div className="cols">
                 <h3>Price:</h3>{' '}
-                <div contentEditable="true" ref={productPriceRef}>
+                <div
+                  className="product-input"
+                  contentEditable="true"
+                  ref={productPriceRef}
+                >
                   0
                 </div>
               </div>
-              <div className="row">
+              <div className="cols">
                 <h3>Quantity:</h3>{' '}
-                <div contentEditable="true" ref={productQuantityRef}>
+                <div
+                  className="product-input"
+                  contentEditable="true"
+                  ref={productQuantityRef}
+                >
                   0
                 </div>
               </div>
-              <div className="row">
+              <div className="cols">
                 <button
                   onClick={newProductHandler}
                   type="submit"
@@ -62,11 +81,6 @@ const EditContainer: React.FC<IEditProps> = ({ storeId }: IEditProps) => {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="product-list-col col-md-4">
-
-            <h1 className="row">Product List: </h1>
-              <ProductList />
           </div>
         </div>
       </div>
