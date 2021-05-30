@@ -24,12 +24,19 @@
 }
 
 .item-col {
+  display:flex;
+  flex-direction: row;
   text-align: center;
   justify-content: center;
   width: 100%;
   margin-right: 31rem;
   overflow-y: scroll;
-  height: 90vh;
+  height: 100%;
+}
+
+.sale-container {
+  height:100%;
+  width: 100%;
 }
 
 .sale-col {
@@ -37,7 +44,7 @@
   width: 100%;
   justify-content: center;
   margin-right: 31rem;
-  height: 10vh;
+  height: 100%;
 }
 
 .item-col::-webkit-scrollbar,

@@ -2,6 +2,7 @@ import React from 'react';
 import {  Button } from 'react-bulma-components';
 import './style.scss';
 import SalesDocket from '../SalesDocket';
+import ProductCard from '../ProductCard';
 
 const arr: number[] = [];
 
@@ -13,16 +14,9 @@ const Sale: React.FC = () => (
     <div className="sale-container">
       <div className="sale-col">
         <h1 className="items-header">Add an item</h1>
-        <div className="item-col">
+        <div className="item-col cols">
           {arr.map(button => (
-            <Button
-              id={button.toString()}
-              className="sale-btn"
-              color="success"
-              size="large"
-            >
-              <p>Hello</p> <p>There</p>
-            </Button>
+            <ProductCard id={button}/>
           ))}
         </div>
       </div>
