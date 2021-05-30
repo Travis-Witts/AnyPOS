@@ -55,9 +55,13 @@ exports.getOneProduct = async (req, res, next) => {
 exports.editStock = async (req, res, next) => {
   const product_id = req.body.id;
   const value = req.body.value;
+  const quantity = req.body.quantity;
+  console.log(product_id)
+  console.log(value);
+  console.log(quantity)
 
   try {
-    const updatedProduct = await ProductService.editStock(product_id, value);
+    const updatedProduct = await ProductService.editStock(product_id, value, quantity);
     res.status(200).json(updatedProduct);
   } catch (error) {
     res.status(400).json(error.message);
