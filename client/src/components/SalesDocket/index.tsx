@@ -10,7 +10,8 @@ const SalesDocket: React.FC = () => (
         <Chevron className="chevron" />
         <h1>New Sale</h1>
       </div>
-      <div className="current-invoice" />
+      <div className="current-invoice container-fluid" />
+        </div> 
       <div className="invoice-footer">
         <div className="payment-row">
           <p>Discount %</p>

@@ -3,11 +3,12 @@
 @import '../../../node_modules/bulma/sass/elements/_all.sass';
 @import '../../../node_modules/bulma/sass/form/_all.sass';
 @import '../../App.scss';
+@import '../../../node_modules/bootstrap-grid/dist/grid.min.css';
 
 @media only screen and (min-width: 601px) {
   .main {
     margin-left: 15rem;
-    height: 100vh;
+    height: 100%;
     margin-bottom: 0;
   }
 }
@@ -24,14 +25,9 @@
 }
 
 .item-col {
-  display:flex;
-  flex-direction: row;
-  text-align: center;
-  justify-content: center;
-  width: 100%;
-  margin-right: 31rem;
+  width: 85%;
+  height: 70%;
   overflow-y: scroll;
-  height: 100%;
 }
 
 .sale-container {

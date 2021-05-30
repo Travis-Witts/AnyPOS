@@ -14,7 +14,7 @@ const Sale: React.FC = () => (
     <div className="sale-container">
       <div className="sale-col">
         <h1 className="items-header">Add an item</h1>
-        <div className="item-col col">
+        <div className="item-col col-md-12">
           {arr.map(button => (
             <ProductCard id={button}/>
           ))}
