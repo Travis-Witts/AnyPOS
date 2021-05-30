@@ -1,28 +1,32 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import axios from 'axios';
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useContext, Dispatch, SetStateAction } from 'react';
 import './style.scss';
+import ProductContext from '../../utils/ProductContext';
 
 type IProduct = {
   name: string | undefined;
   price: number | undefined;
   quantity: number | undefined;
   product_id: string | undefined;
-  onUpdate: () => void;
 };
 
-type IDeleteBody = {
-  id: string | undefined;
-};
+type StoreModel = {
+  productsState: IProduct[] | [];
+  setProducts: Dispatch<SetStateAction<never[]>>;
+}
 
 const EditProduct: React.FC<IProduct> = ({
   name,
   price,
   quantity,
   product_id,
-  onUpdate,
 }: IProduct) => {
   const [priceState, setPrice] = useState<number | undefined>(0);
   const [quantityState, setQuantity] = useState<number | undefined>(0);
+  const { setProducts } = useContext(ProductContext)
+
+
   // Product references
   const productPriceRef = useRef<HTMLInputElement>(null);
   const productQuantityRef = useRef<HTMLInputElement>(null);
@@ -34,7 +38,8 @@ const EditProduct: React.FC<IProduct> = ({
       },
     };
     await axios.delete('/product', config);
-    onUpdate();
+    const newProducts = await axios.get('/product')
+    setProducts(newProducts.data)
   };
   const saveHandler = async () => {
     await axios.put('/product', {
@@ -42,7 +47,8 @@ const EditProduct: React.FC<IProduct> = ({
       value: productPriceRef.current?.value,
       quantity: productQuantityRef.current?.value,
     });
-    onUpdate();
+    const newProducts = await axios.get('/product')
+    setProducts(newProducts.data)
   };
 
   useEffect(() => {
