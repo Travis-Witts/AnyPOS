@@ -9,6 +9,7 @@ const ProductCard: React.FC<ICardProps> = ({ id }: ICardProps) => {
   const a = 1;
 
   return (
+    <div className="">
     <div className="card">
       <header className="card-header">
         <p className="card-header-title">Component {id}</p>
@@ -27,6 +28,7 @@ const ProductCard: React.FC<ICardProps> = ({ id }: ICardProps) => {
           Remove
         </a>
       </footer>
+    </div>
     </div>
   );
 };
