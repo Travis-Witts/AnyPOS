@@ -8,7 +8,7 @@ import Sale from './components/Sale';
 import Receipts from './components/Receipts';
 import LoginContainer from './components/LoginContainer';
 import ProfileContainer from './components/ProfileContainer';
-import EditContainer from './components/EditContainer';
+import EditContainer from './components/EditShopPage';
 
 const App: React.FC = () => {
   const [userIdLogin, setLoggedIn] = useState('');

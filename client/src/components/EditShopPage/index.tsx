@@ -8,12 +8,9 @@ import './style.scss';
 import axios from 'axios';
 import ProductList from '../ProductList';
 import ProductContext from '../../utils/ProductContext';
+import { IProductEdit } from '../../utils/Interface';
 
-type IProduct = {
-  name: string | undefined;
-  price: number | undefined;
-  quantity: number | undefined;
-};
+
 
 type IEditProps = {
   storeId: string;
@@ -32,7 +29,7 @@ const EditContainer: React.FC<IEditProps> = ({ storeId }: IEditProps) => {
   }
 
   const newProductHandler = async () => {
-    const productBody: IProduct = {
+    const productBody: IProductEdit = {
       name: productNameRef.current?.innerText,
       price: Number(productPriceRef.current?.innerText),
       quantity: Number(productQuantityRef.current?.innerText),

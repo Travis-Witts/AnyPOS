@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bulma-components';
 import './style.scss';
-import { ReactComponent as Chevron } from '../Icons/chevron.svg';
+import { ReactComponent as Chevron } from '../assets/icons/chevron.svg';
 import SaleList from '../SaleList';
 
 const SalesDocket: React.FC = () => (

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/await-thenable */
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -7,18 +9,12 @@
 import React, { useContext, useRef, useState } from 'react';
 import './style.scss';
 import SaleContext from '../../utils/SaleContext';
+import { IProduct, StoreModel} from '../../utils/Interface';
 
 type ICardProps = {
   name: string | undefined;
   price: number | undefined;
   quantity: number;
-  product_id: string | undefined;
-};
-
-type IProduct = {
-  name: string | undefined;
-  price: number | undefined;
-  quantity: number | undefined;
   product_id: string | undefined;
 };
 
@@ -30,7 +26,7 @@ const ProductCard: React.FC<ICardProps> = ({
 }: ICardProps) => {
   const quantityRef = useRef<HTMLParagraphElement>(null);
   const [quantityState, setQuantity] = useState<number>(quantity);
-  const { saleState, setProducts } = useContext(SaleContext)
+  const { saleState, setProducts } = useContext<StoreModel>(SaleContext)
 
   const addHandler = (event: React.MouseEvent) => {
     event.preventDefault();

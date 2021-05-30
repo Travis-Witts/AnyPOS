@@ -1,20 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import axios from 'axios';
-import React, { useRef, useState, useEffect, useContext, Dispatch, SetStateAction } from 'react';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 import './style.scss';
 import ProductContext from '../../utils/ProductContext';
+import { IProduct } from '../../utils/Interface';
 
-type IProduct = {
-  name: string | undefined;
-  price: number | undefined;
-  quantity: number | undefined;
-  product_id: string | undefined;
-};
 
-type StoreModel = {
-  productsState: IProduct[] | [];
-  setProducts: Dispatch<SetStateAction<never[]>>;
-}
 
 const EditProduct: React.FC<IProduct> = ({
   name,

@@ -1,12 +1,9 @@
 import React, { useRef, useState } from 'react';
 import './style.scss';
 import axios, { AxiosResponse } from 'axios';
-import { ReactComponent as Logo } from '../Icons/cash-register.svg';
+import { ReactComponent as Logo } from '../assets/icons/cash-register.svg';
 import LoginButton from '../LoginButton';
-
-type LoginProps = {
-  setLogin: (value: string) => void;
-};
+import { LoginProps } from '../../utils/Interface';
 
 const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
   const [loginState, setLoginState] = useState<string | undefined>('');

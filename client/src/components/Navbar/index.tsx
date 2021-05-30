@@ -2,16 +2,13 @@ import React from 'react';
 import './style.scss';
 import axios from 'axios';
 import { NavLink } from "react-router-dom";
-import { ReactComponent as Profile } from '../Icons/profile.svg';
-import { ReactComponent as Logout } from '../Icons/logout.svg';
-import { ReactComponent as POS } from '../Icons/pos.svg';
-import { ReactComponent as Tag } from '../Icons/tag.svg';
-import { ReactComponent as Settings } from '../Icons/settings.svg';
-import { ReactComponent as List } from '../Icons/list.svg';
-
-type LoginProps = {
-  setLogin: (value: string) => void;
-}
+import { ReactComponent as Profile } from '../assets/icons/profile.svg';
+import { ReactComponent as Logout } from '../assets/icons/logout.svg';
+import { ReactComponent as POS } from '../assets/icons/pos.svg';
+import { ReactComponent as Tag } from '../assets/icons/tag.svg';
+import { ReactComponent as Settings } from '../assets/icons/settings.svg';
+import { ReactComponent as List } from '../assets/icons/list.svg';
+import { LoginProps } from '../../utils/Interface';
 
 
 const Navbar: React.FC<LoginProps> = (Props: LoginProps) => {
