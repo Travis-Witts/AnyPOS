@@ -31,6 +31,12 @@ const ProductList: React.FC = () => {
   }, []);
   return (
     <div>
+      <th>
+        <td>Name</td>
+        <td>Price $</td>
+        <td>Quantity (Units)</td>
+        <td>Actions</td>
+      </th>
       {productsState.length ? (
           <ul className="list-group">
             {productsState.map((product: IProduct) => (
