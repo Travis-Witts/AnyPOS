@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React , { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 
 type IProduct = {
@@ -11,7 +11,7 @@ type IProduct = {
 
 type StoreModel = {
     saleState: IProduct[] | [];
-    setProducts: Dispatch<SetStateAction<never[]>>;
+    setProducts: Dispatch<SetStateAction<IProduct[]>>;
 }
 
 

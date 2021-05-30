@@ -1,14 +1,24 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
+/* eslint-disable @typescript-eslint/await-thenable */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import './style.scss';
+import SaleContext from '../../utils/SaleContext';
 
 type ICardProps = {
   name: string | undefined;
   price: number | undefined;
   quantity: number;
+  product_id: string | undefined;
+};
+
+type IProduct = {
+  name: string | undefined;
+  price: number | undefined;
+  quantity: number | undefined;
   product_id: string | undefined;
 };
 
@@ -20,9 +30,14 @@ const ProductCard: React.FC<ICardProps> = ({
 }: ICardProps) => {
   const quantityRef = useRef<HTMLParagraphElement>(null);
   const [quantityState, setQuantity] = useState<number>(quantity);
+  const { saleState, setProducts } = useContext(SaleContext)
 
   const addHandler = (event: React.MouseEvent) => {
+    event.preventDefault();
     const newQ = quantityState + 1;
+    const newProduct = {name, price, quantity, product_id}
+    const products: IProduct[] = [...saleState, newProduct]
+    setProducts(products)
     setQuantity(newQ);
   };
 
