@@ -1,2 +1,6 @@
 @import "../../App.scss";
+@import "../../../node_modules/bulma/sass/components/card.sass";
 
+.card {
+    width: 20rem;
+}
