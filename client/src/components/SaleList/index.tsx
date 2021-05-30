@@ -15,33 +15,37 @@ type IProduct = {
 type StoreModel = {
   productsState: IProduct[] | [];
   setProducts: Dispatch<SetStateAction<never[]>>;
-}
+};
 
 const SaleList: React.FC = () => {
-  const {productsState, setProducts} = useContext<StoreModel>(ProductContext);
+  const { productsState, setProducts } = useContext<StoreModel>(ProductContext);
 
   const getProducts = async () => {
     const products = await axios.get('/product');
     setProducts(products.data);
   };
 
-    
   useEffect(() => {
     void getProducts();
   }, []);
   return (
     <div>
+      <th>
+        <td>Name</td>
+        <td>Price $</td>
+        <td>Quantity</td>
+      </th>
       {productsState.length ? (
-          <ul className="list-group">
-            {productsState.map((product: IProduct) => (
-              <EditProduct
+        <ul className="list-group">
+          {productsState.map((product: IProduct) => (
+            <EditProduct
               product_id={product.product_id}
-                name={product.name}
-                price={product.price}
-                quantity={product.quantity}
-              />
-            ))}
-          </ul>
+              name={product.name}
+              price={product.price}
+              quantity={product.quantity}
+            />
+          ))}
+        </ul>
       ) : (
         <h4>No Products to display.</h4>
       )}
