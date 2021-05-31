@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React from "react";
-import { EditModel } from './Interface'
+import React , { Dispatch, SetStateAction } from "react";
+import { EditModel } from './interface'
 
 
 const ProductContext = React.createContext<EditModel>({

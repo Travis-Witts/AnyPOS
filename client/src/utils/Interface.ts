@@ -9,13 +9,13 @@ export type IProductEdit = {
 export type IProduct = {
     name: string | undefined;
     price: number | undefined;
-    quantity: number;
+    quantity: number | undefined;
     product_id: string | undefined;
   };
 
 export type StoreModel = {
-    productsState: IProduct[] | [];
-    setProducts: any;
+    saleState: IProduct[] | [];
+    setProducts: Dispatch<SetStateAction<never[]>>;
 }
 
 export type EditModel = {

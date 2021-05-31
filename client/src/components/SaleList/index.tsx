@@ -1,11 +1,21 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, Dispatch, SetStateAction } from 'react';
 import './style.scss';
 import axios from 'axios';
 import EditProduct from '../EditProduct';
 import ProductContext from '../../utils/ProductContext';
-import { StoreModel, IProduct } from '../../utils/Interface';
+
+type IProduct = {
+  name: string | undefined;
+  price: number | undefined;
+  quantity: number | undefined;
+  product_id: string | undefined;
+};
+
+type StoreModel = {
+  productsState: IProduct[] | [];
+  setProducts: Dispatch<SetStateAction<never[]>>;
+};
 
 const SaleList: React.FC = () => {
   const { productsState, setProducts } = useContext<StoreModel>(ProductContext);

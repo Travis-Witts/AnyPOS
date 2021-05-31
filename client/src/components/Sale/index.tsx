@@ -8,13 +8,13 @@ import axios from 'axios';
 import SalesDocket from '../SalesDocket';
 import ProductCard from '../ProductCard';
 import SaleContext from '../../utils/SaleContext';
-import { IProduct, StoreModel } from '../../utils/Interface';
+import { IProduct, StoreModel } from '../../utils/interface';
 
 const Sale: React.FC = () => {
   const [cardList, setCards] = useState([]);
   const [productList, setList] = useState([]);
   const value: StoreModel = {
-    productsState: productList,
+    saleState: productList,
     setProducts: setList,
   };
   const getCards = async () => {
