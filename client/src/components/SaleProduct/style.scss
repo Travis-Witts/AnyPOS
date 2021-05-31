@@ -1,0 +1,17 @@
+@import '../../App.scss';
+
+.input-col {
+    width: 100%;
+}
+
+.product-table {
+    height: 100%;
+    width: 100%;
+}
+
+.product-row {
+    color: $text-dark;
+    width: 100%;
+    height: 3rem;
+    padding: 1rem;
+}

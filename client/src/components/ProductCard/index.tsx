@@ -23,33 +23,23 @@ const ProductCard: React.FC<ICardProps> = ({
 }: ICardProps) => {
   const quantityRef = useRef<HTMLParagraphElement>(null);
   const [quantityState, setQuantity] = useState<number>(quantity);
-<<<<<<< HEAD
-  const { productsState, setProducts } = useContext<StoreModel>(SaleContext)
-=======
   const { saleState, setProducts } = useContext<StoreModel>(SaleContext)
->>>>>>> parent of 45ffb64 (:construction: fix: fix ts error on context :construction:)
 
   const addHandler = (event: React.MouseEvent) => {
     event.preventDefault();
-    const newQ = quantityState + 1;
-    const newProduct = {name, price, quantity, product_id}
+    const newQ = 1;
+    const newProduct = {name, price, quantity: newQ, product_id}
     const products: IProduct[] = [...saleState, newProduct]
     setProducts(products)
-    setQuantity(quantityState + 1);
+    setQuantity(quantityState - 1);
   };
-
   const removeHandler = (event: React.MouseEvent) => {
-<<<<<<< HEAD
     event.preventDefault();
     const newQ = -1;
     const newProduct = {name, price, quantity: newQ, product_id}
-    const products: IProduct[] = [...productsState, newProduct]
+    const products: IProduct[] = [...saleState, newProduct]
     setProducts(products)
-    setQuantity(quantityState -1);
-=======
-    const newQ = quantityState - 1;
-    setQuantity(newQ);
->>>>>>> parent of 45ffb64 (:construction: fix: fix ts error on context :construction:)
+    setQuantity(quantityState + 1);
   };
 
   return (

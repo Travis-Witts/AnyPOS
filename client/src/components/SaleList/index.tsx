@@ -1,44 +1,29 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useContext, Dispatch, SetStateAction } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './style.scss';
-import axios from 'axios';
-import EditProduct from '../EditProduct';
-import ProductContext from '../../utils/ProductContext';
-
-type IProduct = {
-  name: string | undefined;
-  price: number | undefined;
-  quantity: number | undefined;
-  product_id: string | undefined;
-};
-
-type StoreModel = {
-  productsState: IProduct[] | [];
-  setProducts: Dispatch<SetStateAction<never[]>>;
-};
+import SaleProduct from '../SaleProduct';
+import SaleContext from '../../utils/SaleContext'
+import { StoreModel, IProduct } from '../../utils/Interface'
 
 const SaleList: React.FC = () => {
-  const { productsState, setProducts } = useContext<StoreModel>(ProductContext);
-
-  const getProducts = async () => {
-    const products = await axios.get('/product');
-    setProducts(products.data);
-  };
+  const { saleState } = useContext<StoreModel>(SaleContext);
 
   useEffect(() => {
-    void getProducts();
   }, []);
   return (
-    <div>
-      <th>
-        <td>Name</td>
-        <td>Price $</td>
-        <td>Quantity</td>
+    <div className="table-header">
+      <th className="table-header">
+        <td className="table-header">Name</td>
+        <td className="table-header">Price $</td>
+        <td className="table-header">Quantity</td>
       </th>
-      {productsState.length ? (
-        <ul className="list-group">
-          {productsState.map((product: IProduct) => (
-            <EditProduct
+      {saleState.length ? (
+        <ul className="list-group table-header">
+          {saleState.map((product: IProduct) => (
+            <SaleProduct
               product_id={product.product_id}
               name={product.name}
               price={product.price}
