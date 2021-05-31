@@ -4,18 +4,9 @@ import './style.scss';
 import axios from 'axios';
 import EditProduct from '../EditProduct';
 import ProductContext from '../../utils/ProductContext';
+import { StoreModel, IProduct } from '../../utils/Interface';
 
-type IProduct = {
-  name: string | undefined;
-  price: number | undefined;
-  quantity: number | undefined;
-  product_id: string | undefined;
-};
 
-type StoreModel = {
-  productsState: IProduct[] | [];
-  setProducts: Dispatch<SetStateAction<never[]>>;
-}
 
 const ProductList: React.FC = () => {
   const {productsState, setProducts} = useContext<StoreModel>(ProductContext);

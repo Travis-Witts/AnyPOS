@@ -25,20 +25,24 @@ const ProductCard: React.FC<ICardProps> = ({
   product_id,
 }: ICardProps) => {
   const quantityRef = useRef<HTMLParagraphElement>(null);
-  const [quantityState, setQuantity] = useState<number>(quantity);
-  const { saleState, setProducts } = useContext<StoreModel>(SaleContext)
+  const [quantityState, setQuantity] = useState<number>(0);
+  const { productsState, setProducts } = useContext<StoreModel>(SaleContext)
 
   const addHandler = (event: React.MouseEvent) => {
     event.preventDefault();
-    const newQ = quantityState + 1;
-    const newProduct = {name, price, quantity, product_id}
-    const products: IProduct[] = [...saleState, newProduct]
+    const newQ = 1;
+    const newProduct = {name, price, quantity: newQ, product_id}
+    const products: IProduct[] = [...productsState, newProduct]
     setProducts(products)
     setQuantity(newQ);
   };
 
   const removeHandler = (event: React.MouseEvent) => {
-    const newQ = quantityState - 1;
+    event.preventDefault();
+    const newQ = -1;
+    const newProduct = {name, price, quantity: newQ, product_id}
+    const products: IProduct[] = [...productsState, newProduct]
+    setProducts(products)
     setQuantity(newQ);
   };
 
