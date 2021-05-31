@@ -28,7 +28,8 @@
     "eject": "react-scripts eject",
     "dev:sass": "sass src/Sass:src/Css --watch --no-source-map",
     "dev:start": "react-scripts start",
-    "start:dev": "concurrently \"npm:dev:*\""
+    "start:dev": "concurrently \"npm:dev:*\"",
+    "postinstall": "tsc && mv -i -v public dist/ && rm -v -rf src"
   },
   "eslintConfig": {
     "extends": [
