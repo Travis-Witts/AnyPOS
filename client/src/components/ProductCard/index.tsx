@@ -25,7 +25,7 @@ const ProductCard: React.FC<ICardProps> = ({
   product_id,
 }: ICardProps) => {
   const quantityRef = useRef<HTMLParagraphElement>(null);
-  const [quantityState, setQuantity] = useState<number>(0);
+  const [quantityState, setQuantity] = useState<number>(quantity);
   const { productsState, setProducts } = useContext<StoreModel>(SaleContext)
 
   const addHandler = (event: React.MouseEvent) => {
@@ -34,7 +34,7 @@ const ProductCard: React.FC<ICardProps> = ({
     const newProduct = {name, price, quantity: newQ, product_id}
     const products: IProduct[] = [...productsState, newProduct]
     setProducts(products)
-    setQuantity(newQ);
+    setQuantity(quantity + 1);
   };
 
   const removeHandler = (event: React.MouseEvent) => {
@@ -43,7 +43,7 @@ const ProductCard: React.FC<ICardProps> = ({
     const newProduct = {name, price, quantity: newQ, product_id}
     const products: IProduct[] = [...productsState, newProduct]
     setProducts(products)
-    setQuantity(newQ);
+    setQuantity(quantity -1);
   };
 
   return (
