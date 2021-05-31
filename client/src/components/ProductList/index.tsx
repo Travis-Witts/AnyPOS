@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useContext, Dispatch, SetStateAction } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './style.scss';
 import axios from 'axios';
 import EditProduct from '../EditProduct';
