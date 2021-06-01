@@ -4,12 +4,13 @@
 
 - [Overview](#overview)
 - [Technologies](#technologies-used)
-- [Acceptance Criteria](#acceptance-criteria)
-- [Approach](#approach)
+- [Screenshots](#Screenshots-of-the-app)
+- [Links](#Links)
 - [License](#license)
 
 
 ## Overview
+A Mobile responsive react web-application designed for businesses of all sizes to use to track stock-levels, profit-margin and handle cash processing.
 
 ---
 
@@ -22,26 +23,25 @@
 - Express
 - MySQL
 - Sequelize
-
----
-
-## Requirements
-
+- Bcrypt
+- Axios
+- BootStrap
+- Figma
 
 ---
 
 
 ## Links:
 
-1. Deployed : 
-2. GitHub repo: 
+1. Deployed :  [Here](https://fast-peak-90865.herokuapp.com/)
+
+2. GitHub repo:  [Here](https://github.com/Travis-Witts/AnyPOS)
 ---
 
 ## Screenshots of the app:
 Desktop version:
 
 
-Mobile version:
 
 
 
