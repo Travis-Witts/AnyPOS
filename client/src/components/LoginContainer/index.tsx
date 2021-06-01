@@ -32,9 +32,13 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
       password: regPasswordRef.current?.value,
       storeName: storeInputRef.current?.value,
     };
+    try {
+      const registeredUser= await axios.post('/user/', newUser);
+      Props.setLogin(registeredUser.data.user.user_id);
+    } catch (error) {
+      alert("Invalid Details. Please Try Again.")
+    }
 
-    const registeredUser: AxiosResponse = await axios.post('/user/', newUser);
-    Props.setLogin(registeredUser.data.user.user_id);
   };
 
   const loginHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -43,8 +47,12 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
       email: emailInputRef.current?.value,
       password: passwordInputRef.current?.value,
     };
-    const loggedUser = await axios.post('/user/login', loginUser);
-    Props.setLogin(loggedUser.data.user.user_id);
+    try {
+      const loggedUser: any = await axios.post('/user/login', loginUser);
+      Props.setLogin(loggedUser.data.user.user_id);
+    } catch (error) {
+      alert("Incorrect username or Password. Try Again.")
+    }
   };
 
   return (
@@ -112,7 +120,7 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
                 placeholder="Please Enter Your Email"
                 ref={regEmailRef}
               />
-              <p>Password: </p>
+              <p>Password: (8-16 characters) </p>
               <input
                 type="password"
                 className="form-control"

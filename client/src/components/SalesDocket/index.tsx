@@ -1,4 +1,5 @@
-import React, { useContext, useRef } from 'react';
+/* eslint-disable radix */
+import React, { useContext, useRef, useState } from 'react';
 import { Form, Button } from 'react-bulma-components';
 import './style.scss';
 import { ReactComponent as Chevron } from '../assets/icons/chevron.svg';
@@ -8,8 +9,17 @@ import SaleContext from '../../utils/SaleContext';
 
 const SalesDocket: React.FC = () => {
   const { totalState } = useContext<StoreModel>(SaleContext);
+  const [discountState, setDiscount] = useState<number>(0);
   const gstRef = useRef<HTMLInputElement>(null);
   const totalRef = useRef<HTMLInputElement>(null);
+  const discountRef = useRef<HTMLInputElement>(null);
+
+  const discountHandler = () => {
+    if (discountRef.current) {
+      setDiscount(parseInt(discountRef.current.value));
+    }
+  };
+
   return (
     <div className="sales-row">
       <div className="invoice-col">
@@ -23,7 +33,13 @@ const SalesDocket: React.FC = () => {
         <div className="invoice-footer">
           <div className="payment-row">
             <p>Discount %</p>
-            <Form.Input className="discount-form" />
+            <input
+              onChange={discountHandler}
+              type="number"
+              defaultValue={0}
+              className="total-form pay-form"
+              ref={discountRef}
+            />
           </div>
           <div className="payment-row">
             <p>Email</p>
@@ -34,7 +50,9 @@ const SalesDocket: React.FC = () => {
             <input
               disabled
               type="text"
-              value={`$ ${((totalState * 0.1).toFixed(2)).toString()}`}
+              value={`$ ${(totalState * (1 - discountState / 100) * 0.1)
+                .toFixed(2)
+                .toString()}`}
               className="total-form pay-form"
               ref={gstRef}
             />
@@ -44,7 +62,9 @@ const SalesDocket: React.FC = () => {
             <input
               disabled
               type="text"
-              value={`$ ${((totalState * 1.1).toFixed(2)).toString()}`}
+              value={`$ ${(totalState * 1.1 * (1 - discountState / 100))
+                .toFixed(2)
+                .toString()}`}
               className="total-form pay-form"
               ref={totalRef}
             />

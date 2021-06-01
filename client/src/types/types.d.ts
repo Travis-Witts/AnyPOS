@@ -26,3 +26,8 @@ export type EditModel = {
 export type LoginProps = {
   setLogin: (value: string) => void;
 }
+
+export type DiscountType = {
+  discountState: number;
+  setDiscount: (value: number) => void;
+}
