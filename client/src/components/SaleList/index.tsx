@@ -1,12 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useContext } from 'react';
 import './style.scss';
 import SaleProduct from '../SaleProduct';
 import SaleContext from '../../utils/SaleContext'
-import { StoreModel, IProduct } from '../../utils/Interface'
+import { StoreModel, IProduct } from '../../types/types'
 
 const SaleList: React.FC = () => {
   const { saleState } = useContext<StoreModel>(SaleContext);

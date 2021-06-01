@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect } from 'react';
 import './style.scss';
-import { IProduct } from '../../utils/Interface';
+import { IProduct } from '../../types/types';
 
 
 

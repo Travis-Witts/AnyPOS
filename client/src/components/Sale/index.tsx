@@ -1,21 +1,20 @@
-/* eslint-disable react/no-unused-prop-types */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable import/no-named-as-default-member */
 import React, { useState, useEffect } from 'react';
 import './style.scss';
 import axios from 'axios';
 import SalesDocket from '../SalesDocket';
 import ProductCard from '../ProductCard';
 import SaleContext from '../../utils/SaleContext';
-import { IProduct, StoreModel } from '../../utils/Interface';
+import { IProduct, StoreModel } from '../../types/types';
 
 const Sale: React.FC = () => {
   const [cardList, setCards] = useState([]);
-  const [productList, setList] = useState([]);
+  const [saleState, setProducts] = useState([]);
+  const [totalState, setTotal] = useState(0)
   const value: StoreModel = {
-    saleState: productList,
-    setProducts: setList,
+    saleState,
+    setProducts,
+    totalState,
+    setTotal
   };
   const getCards = async () => {
     const newProducts = await axios.get('/product');
