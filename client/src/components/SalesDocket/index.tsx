@@ -6,7 +6,7 @@ import axios from 'axios';
 import { ReactComponent as Chevron } from '../assets/icons/chevron.svg';
 import SaleList from '../SaleList';
 import { SaleModel } from '../../types/types';
-import SaleContext from '../../utils/SaleContext';
+import SaleContext from '../../context/SaleContext';
 
 const SalesDocket: React.FC = () => {
   const { totalState, saleState } = useContext<SaleModel>(SaleContext);
@@ -28,11 +28,7 @@ const SalesDocket: React.FC = () => {
       discount: discountState,
       stock: saleState
     }
-    console.log(newTransactionBody)
-    const newTransaction = await axios.post("/transaction/", newTransactionBody)
-    const { transaction_id } = newTransaction.data
-    console.log(transaction_id)
-    
+    await axios.post("/transaction/", newTransactionBody)    
   }
 
 

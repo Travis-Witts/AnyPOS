@@ -3,7 +3,7 @@ import './style.scss';
 import axios from 'axios';
 import SalesDocket from '../SalesDocket';
 import ProductCard from '../ProductCard';
-import SaleContext from '../../utils/SaleContext';
+import SaleContext from '../../context/SaleContext';
 import { IProduct, SaleModel } from '../../types/types';
 
 const Sale: React.FC = () => {

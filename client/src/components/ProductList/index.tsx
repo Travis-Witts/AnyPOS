@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useContext } from 'react';
 import './style.scss';
 import axios from 'axios';
 import EditProduct from '../EditProduct';
-import ProductContext from '../../utils/ProductContext';
+import ProductContext from '../../context/ProductContext';
 import { EditModel, IProduct } from '../../types/types'
 
 const ProductList: React.FC = () => {

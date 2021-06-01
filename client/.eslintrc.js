@@ -39,6 +39,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-call' : 'off',
     '@typescript-eslint/no-explicit-any' : 'off',
     'no-void': 'off',
+    'no-alert': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import './style.scss';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { ReactComponent as Logo } from '../assets/icons/cash-register.svg';
 import LoginButton from '../LoginButton';
 import { LoginProps } from '../../types/types';

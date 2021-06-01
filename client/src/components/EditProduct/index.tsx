@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useRef, useState, useEffect, useContext } from 'react';
 import './style.scss';
-import ProductContext from '../../utils/ProductContext';
+import ProductContext from '../../context/ProductContext';
 import { IProduct } from '../../types/types';
 
 

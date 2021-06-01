@@ -7,7 +7,7 @@ import React, { useRef, useState } from 'react';
 import './style.scss';
 import axios from 'axios';
 import ProductList from '../ProductList';
-import ProductContext from '../../utils/ProductContext';
+import ProductContext from '../../context/ProductContext';
 import { IProductEdit } from '../../types/types';
 
 

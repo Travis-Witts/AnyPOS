@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import './style.scss';
 import SaleProduct from '../SaleProduct';
-import SaleContext from '../../utils/SaleContext'
+import SaleContext from '../../context/SaleContext'
 import { SaleModel, IProduct } from '../../types/types'
 
 const SaleList: React.FC = () => {
