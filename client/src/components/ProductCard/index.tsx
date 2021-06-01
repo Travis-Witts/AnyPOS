@@ -3,40 +3,57 @@ import './style.scss';
 import SaleContext from '../../utils/SaleContext';
 import { IProduct, StoreModel } from '../../types/types';
 
-type ICardProps = {
-  name: string | undefined;
-  price: number;
-  quantity: number;
-  product_id: string | undefined;
-};
-
-const ProductCard: React.FC<ICardProps> = ({
+const ProductCard: React.FC<IProduct> = ({
   name,
   price,
   quantity,
   product_id,
-}: ICardProps) => {
+}: IProduct) => {
   const quantityRef = useRef<HTMLParagraphElement>(null);
   const [quantityState, setQuantity] = useState<number>(quantity);
-  const { saleState, setProducts, totalState, setTotal } = useContext<StoreModel>(SaleContext)
+  const { saleState, setProducts, totalState, setTotal } =
+    useContext<StoreModel>(SaleContext);
 
   const addHandler = (event: React.MouseEvent) => {
     event.preventDefault();
-    const newQ = 1;
-    const newProduct = {name, price, quantity: newQ, product_id}
-    const products: IProduct[] = [...saleState, newProduct]
-    setProducts(products)
+    const newProduct: IProduct = { name, price, quantity: 1, product_id };
+    let exists = false;
+    for (let i = 0; i < saleState.length; i += 1) {
+      if (product_id === saleState[i].product_id) {
+        saleState[i].quantity +=1
+        exists = true
+      }
+    }
+    if (!exists) {
+      const newProducts: IProduct[] = [...saleState, newProduct];
+      setProducts(newProducts);
+    } else {
+      const products: IProduct[] = saleState
+      setProducts(products);
+    }
     setQuantity(quantityState - 1);
-    setTotal(totalState + price)
+    setTotal(totalState + price);
   };
+
   const removeHandler = (event: React.MouseEvent) => {
     event.preventDefault();
-    const newQ = -1;
-    const newProduct = {name, price, quantity: newQ, product_id}
-    const products: IProduct[] = [...saleState, newProduct]
-    setProducts(products)
+    const newProduct: IProduct = { name, price, quantity: -1, product_id };
+    let exists = false;
+    for (let i = 0; i < saleState.length; i += 1) {
+      if (product_id === saleState[i].product_id) {
+        saleState[i].quantity -=1
+        exists = true
+      }
+    }
+    if (!exists) {
+      const newProducts: IProduct[] = [...saleState, newProduct];
+      setProducts(newProducts);
+    } else {
+      const products: IProduct[] = saleState
+      setProducts(products);
+    }
     setQuantity(quantityState + 1);
-    setTotal(totalState - price)
+    setTotal(totalState - price);
   };
 
   return (

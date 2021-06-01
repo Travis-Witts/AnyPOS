@@ -19,7 +19,7 @@ const EditProduct: React.FC<IProduct> = ({
   }, []);
 
   return (
-    <tr className="product-row">
+    <tr className="product-row" key={name}>
       <td>
         <p>{name}</p>
       </td>

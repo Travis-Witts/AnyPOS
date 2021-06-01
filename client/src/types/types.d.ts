@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
-
 export type IProductEdit = {
   name: string | undefined;
   price: number;
@@ -10,7 +8,7 @@ export type IProduct = {
     name: string | undefined;
     price: number;
     quantity: number;
-    product_id: string | undefined;
+    product_id: string;
   };
 
 export type StoreModel = {
@@ -22,7 +20,7 @@ export type StoreModel = {
 
 export type EditModel = {
   productsState: IProduct[] | [];
-  setProducts: Dispatch<SetStateAction<never[]>>;
+  setProducts: any;
 }
 
 export type LoginProps = {
