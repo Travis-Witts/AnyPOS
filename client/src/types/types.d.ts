@@ -1,15 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dispatch, SetStateAction } from "react";
 
 export type IProductEdit = {
   name: string | undefined;
-  price: number | undefined;
-  quantity: number | undefined;
+  price: number;
+  quantity: number;
 };
 
 export type IProduct = {
     name: string | undefined;
-    price: number | undefined;
+    price: number;
     quantity: number;
     product_id: string | undefined;
   };
@@ -17,6 +16,8 @@ export type IProduct = {
 export type StoreModel = {
     saleState: IProduct[] | [];
     setProducts: any;
+    totalState: number;
+    setTotal: (value: number) => void;
 }
 
 export type EditModel = {

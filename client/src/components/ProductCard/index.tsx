@@ -1,16 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
-/* eslint-disable @typescript-eslint/await-thenable */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useContext, useRef, useState } from 'react';
 import './style.scss';
 import SaleContext from '../../utils/SaleContext';
-import { IProduct, StoreModel} from '../../utils/Interface';
+import { IProduct, StoreModel } from '../../types/types';
 
 type ICardProps = {
   name: string | undefined;
-  price: number | undefined;
+  price: number;
   quantity: number;
   product_id: string | undefined;
 };
@@ -23,7 +18,7 @@ const ProductCard: React.FC<ICardProps> = ({
 }: ICardProps) => {
   const quantityRef = useRef<HTMLParagraphElement>(null);
   const [quantityState, setQuantity] = useState<number>(quantity);
-  const { saleState, setProducts } = useContext<StoreModel>(SaleContext)
+  const { saleState, setProducts, totalState, setTotal } = useContext<StoreModel>(SaleContext)
 
   const addHandler = (event: React.MouseEvent) => {
     event.preventDefault();
@@ -32,6 +27,7 @@ const ProductCard: React.FC<ICardProps> = ({
     const products: IProduct[] = [...saleState, newProduct]
     setProducts(products)
     setQuantity(quantityState - 1);
+    setTotal(totalState + price)
   };
   const removeHandler = (event: React.MouseEvent) => {
     event.preventDefault();
@@ -40,6 +36,7 @@ const ProductCard: React.FC<ICardProps> = ({
     const products: IProduct[] = [...saleState, newProduct]
     setProducts(products)
     setQuantity(quantityState + 1);
+    setTotal(totalState - price)
   };
 
   return (

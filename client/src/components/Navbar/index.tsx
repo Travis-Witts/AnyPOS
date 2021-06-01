@@ -8,7 +8,7 @@ import { ReactComponent as POS } from '../assets/icons/pos.svg';
 import { ReactComponent as Tag } from '../assets/icons/tag.svg';
 import { ReactComponent as Settings } from '../assets/icons/settings.svg';
 import { ReactComponent as List } from '../assets/icons/list.svg';
-import { LoginProps } from '../../utils/Interface';
+import { LoginProps } from '../../types/types';
 
 
 const Navbar: React.FC<LoginProps> = (Props: LoginProps) => {

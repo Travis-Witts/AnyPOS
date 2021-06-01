@@ -5,7 +5,7 @@ import './style.scss';
 import axios from 'axios';
 import EditProduct from '../EditProduct';
 import ProductContext from '../../utils/ProductContext';
-import { EditModel, IProduct } from '../../utils/Interface'
+import { EditModel, IProduct } from '../../types/types'
 
 const ProductList: React.FC = () => {
   const {productsState, setProducts} = useContext<EditModel>(ProductContext);

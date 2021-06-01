@@ -1,9 +1,8 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import axios from 'axios';
 import React, { useRef, useState, useEffect, useContext } from 'react';
 import './style.scss';
 import ProductContext from '../../utils/ProductContext';
-import { IProduct } from '../../utils/Interface';
+import { IProduct } from '../../types/types';
 
 
 
@@ -45,7 +44,6 @@ const EditProduct: React.FC<IProduct> = ({
   useEffect(() => {
     setPrice(price);
     setQuantity(quantity);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

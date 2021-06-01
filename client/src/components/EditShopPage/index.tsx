@@ -8,7 +8,7 @@ import './style.scss';
 import axios from 'axios';
 import ProductList from '../ProductList';
 import ProductContext from '../../utils/ProductContext';
-import { IProductEdit } from '../../utils/Interface';
+import { IProductEdit } from '../../types/types';
 
 
 

@@ -3,7 +3,7 @@ import './style.scss';
 import axios, { AxiosResponse } from 'axios';
 import { ReactComponent as Logo } from '../assets/icons/cash-register.svg';
 import LoginButton from '../LoginButton';
-import { LoginProps } from '../../utils/Interface';
+import { LoginProps } from '../../types/types';
 
 const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
   const [loginState, setLoginState] = useState<string | undefined>('');
@@ -58,7 +58,7 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
       <div className="login-row">
         {loginState === '' &&
           ['Register', 'Login'].map(name => (
-            <LoginButton onClick={onClickHandler} typeName={name} />
+            <LoginButton key={name} onClick={onClickHandler} typeName={name} />
           ))}
         {loginState === 'Login' && (
           <div className="login-col">
