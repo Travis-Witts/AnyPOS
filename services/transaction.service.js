@@ -1,9 +1,11 @@
 const { Transaction } = require("../models");
 
-exports.createSale = async (store_id) => {
+exports.createSale = async (store_id, total, discount) => {
   try {
     const newSale = await Transaction.create({
       store_id: store_id,
+      total: total,
+      discount: discount
     });
     return newSale;
   } catch (error) {

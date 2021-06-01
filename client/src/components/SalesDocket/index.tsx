@@ -2,13 +2,14 @@
 import React, { useContext, useRef, useState } from 'react';
 import { Form, Button } from 'react-bulma-components';
 import './style.scss';
+import axios from 'axios';
 import { ReactComponent as Chevron } from '../assets/icons/chevron.svg';
 import SaleList from '../SaleList';
-import { StoreModel } from '../../types/types';
+import { SaleModel } from '../../types/types';
 import SaleContext from '../../utils/SaleContext';
 
 const SalesDocket: React.FC = () => {
-  const { totalState } = useContext<StoreModel>(SaleContext);
+  const { totalState, saleState } = useContext<SaleModel>(SaleContext);
   const [discountState, setDiscount] = useState<number>(0);
   const gstRef = useRef<HTMLInputElement>(null);
   const totalRef = useRef<HTMLInputElement>(null);
@@ -19,6 +20,21 @@ const SalesDocket: React.FC = () => {
       setDiscount(parseInt(discountRef.current.value));
     }
   };
+
+  const transactionHandler = async (event: React.MouseEvent) => {
+    event.preventDefault();
+    const newTransactionBody = {
+      total: totalState,
+      discount: discountState,
+      stock: saleState
+    }
+    console.log(newTransactionBody)
+    const newTransaction = await axios.post("/transaction/", newTransactionBody)
+    const { transaction_id } = newTransaction.data
+    console.log(transaction_id)
+    
+  }
+
 
   return (
     <div className="sales-row">
@@ -69,7 +85,7 @@ const SalesDocket: React.FC = () => {
               ref={totalRef}
             />
           </div>
-          <Button className="pay-btn" color="success">
+          <Button onClick={transactionHandler} className="pay-btn" color="success">
             Pay
           </Button>
         </div>

@@ -15,14 +15,17 @@ Transaction.init(
       type: DataTypes.UUID,
       allowNull: false,
       references: {
-        model: "Transaction",
-        key: "Transaction_id",
+        model: "store",
+        key: "store_id",
       },
+    },
+    discount: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     total: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 0,
     },
     date: {
         type: DataTypes.DATE,

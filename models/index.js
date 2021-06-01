@@ -21,6 +21,16 @@ Store.hasMany(Transaction, {
   onDelete: "CASCADE",
 });
 
+Product.hasMany(ProductTransaction, {
+  foreignKey: "product_id",
+  onDelete: "CASCADE"
+})
+
+Transaction.hasMany(ProductTransaction, {
+  foreignKey: "transaction_id",
+  onDelete: "CASCADE"
+})
+
 // Belongs to:
 
 Store.belongsTo(User, {
@@ -35,10 +45,12 @@ Transaction.belongsTo(Store, {
   foreignKey: "store_id",
 });
 
-Product.belongsToMany(Transaction, {
-  through: {
-    model: ProductTransaction,
-  },
-});
+ProductTransaction.belongsTo(Product, {
+  foreignKey: "product_id"
+})
+
+ProductTransaction.belongsTo(Transaction, {
+  foreignKey: "transaction_id"
+})
 
 module.exports = { User, Store, Product, Transaction, ProductTransaction };

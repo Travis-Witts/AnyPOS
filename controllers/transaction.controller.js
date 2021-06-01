@@ -1,12 +1,27 @@
 const TransactionService = require("../services/transaction.service");
-const ProductTransactionService = require("../services/productTransaction.service")
+const ProductTransactionService = require("../services/productTransaction.service");
 const transactionSum = require("../utils/transactionSum");
 
 exports.createTransaction = async (req, res, next) => {
   const store_id = req.session.store_id;
-
+  const total = req.body.total;
+  const discount = req.body.discount;
+  const stock = req.body.stock;
   try {
-    const newTransaction = await TransactionService.createSale(store_id);
+    const newTransaction = await TransactionService.createSale(
+      store_id,
+      total,
+      discount
+    );
+    const newArr = await stock.map((product) => {
+      return {
+        price: product.price,
+        product_id: product.product_id,
+        quantity: product.quantity,
+        transaction_id: newTransaction.dataValues.transaction_id,
+      };
+    });
+    const transactionProducts = await ProductTransactionService.sellStock(newArr);
     res.status(200).json(newTransaction);
   } catch (error) {
     res.status(400).json(error.message);
@@ -39,7 +54,9 @@ exports.updateTotal = async (req, res, next) => {
   const transaction_id = req.body.transaction_id;
 
   try {
-    const invoiceLines = await ProductTransactionService.getTransactionLines(transaction_id);
+    const invoiceLines = await ProductTransactionService.getTransactionLines(
+      transaction_id
+    );
     const value = transactionSum(invoiceLines);
     const updatedTransaction = await TransactionService.updateTotal(
       transaction_id,
@@ -61,4 +78,4 @@ exports.getAllDaily = async (req, res, next) => {
   } catch (error) {
     res.status(403).json(error);
   }
-}
+};
