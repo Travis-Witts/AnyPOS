@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
 import './style.scss';
 import SaleContext from '../../utils/SaleContext';
-import { IProduct, StoreModel } from '../../types/types';
+import { ISaleProduct, IProduct, SaleModel } from '../../types/types';
 
 const ProductCard: React.FC<IProduct> = ({
   name,
@@ -12,7 +12,7 @@ const ProductCard: React.FC<IProduct> = ({
   const quantityRef = useRef<HTMLParagraphElement>(null);
   const [quantityState, setQuantity] = useState<number>(quantity);
   const { saleState, setProducts, totalState, setTotal } =
-    useContext<StoreModel>(SaleContext);
+    useContext<SaleModel>(SaleContext);
 
   const addHandler = (event: React.MouseEvent) => {
     event.preventDefault();

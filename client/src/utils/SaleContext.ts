@@ -1,7 +1,7 @@
 import React from "react";
-import { StoreModel } from '../types/types'
+import { SaleModel } from '../types/types'
 
-const SaleContext = React.createContext<StoreModel>({
+const SaleContext = React.createContext<SaleModel>({
     saleState: [],
     setProducts: () => {},
     totalState: 0,

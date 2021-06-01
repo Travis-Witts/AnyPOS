@@ -2,10 +2,10 @@ import React, { useEffect, useContext } from 'react';
 import './style.scss';
 import SaleProduct from '../SaleProduct';
 import SaleContext from '../../utils/SaleContext'
-import { StoreModel, IProduct } from '../../types/types'
+import { SaleModel, IProduct } from '../../types/types'
 
 const SaleList: React.FC = () => {
-  const { saleState } = useContext<StoreModel>(SaleContext);
+  const { saleState } = useContext<SaleModel>(SaleContext);
 
   useEffect(() => {
   }, []);
