@@ -34,7 +34,6 @@ const SalesDocket: React.FC = () => {
 
   return (
     <div className="transaction-col">
-      <div className="invoice-col">
         <div className="invoice-header">
           <Chevron className="chevron" />
           <h1>New Sale</h1>
@@ -85,7 +84,6 @@ const SalesDocket: React.FC = () => {
             Pay
           </Button>
         </div>
-      </div>
     </div>
   );
 };
