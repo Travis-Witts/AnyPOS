@@ -4,7 +4,6 @@ $text-primary: #b6b6b6;
 $text-secondary: #ececec;
 $text-dark: black;
 
-
 $bg-primary: #23232e;
 $bg-secondary: #141418;
 $bg-body: #454545;
@@ -21,7 +20,35 @@ $bg-icon: #7e5799;
   width: 100%;
 }
 
+@media only screen and (min-width: 601px) {
+  .App {
+    grid-template-columns: 1fr 20fr 10fr;
+    grid-template-areas:
+      'nav  header sidebar'
+      'nav  content sidebar'
+      'nav  content sidebar'
+      'nav  content sidebar';
+  }
+}
+@media only screen and (max-width: 600px) {
+  .App {
+    grid-template-columns: 5fr 1fr;
+    grid-template-areas:
+      'content  sidebar'
+      'content sidebar'
+      'content sidebar'
+      'nav  nav';
+  }
+}
+
 .App {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  overflow: hidden;
+}
+
+html { 
   height: 100%;
   width: 100%;
 }
@@ -31,8 +58,8 @@ body {
   background-color: $bg-body;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
 
 body::-webkit-scrollbar {

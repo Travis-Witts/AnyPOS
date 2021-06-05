@@ -19,23 +19,22 @@ const EditProduct: React.FC<IProduct> = ({
   }, []);
 
   return (
-    <tr className="product-row" key={name}>
-      <td>
+    <div className="product-row" key={name}>
+      <div className="item-name">
         <p>{name}</p>
-      </td>
-      <td>
+      </div>
+      <div className="item-price">
         <input
           className="input-col"
           disabled
           type="text"
           value={price}
         />
-      </td>
-      <td>
+      </div>
+      <div className="item-quantity">
         <input className="input-col" disabled type="text" value={quantity} />
-      </td>
-      <hr />
-    </tr>
+      </div>
+    </div>
   );
 };
 

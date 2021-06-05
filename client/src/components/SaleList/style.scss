@@ -1,5 +1,39 @@
 @import '../../App.scss';
 
-.table-header {
-    width: 450px;
+.container {
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-column: repeat(3,1fr);
+}   
+
+.list-group, .product-row {
+    display:contents;
+}
+
+#col-name {
+    grid-column: 1;
+}
+
+#col-price {
+    grid-column: 2;
+}
+
+#col-quantity {
+    grid-column: 3;
+}
+
+.item-name {
+    grid-column: 1;
+    height: 20px;
+}
+
+.item-price {
+    grid-column: 2;
+    height: 20px;
+}
+
+.item-quantity {
+    grid-column: 3;
+    height: 20px;
 }

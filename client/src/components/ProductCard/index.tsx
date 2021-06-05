@@ -57,8 +57,7 @@ const ProductCard: React.FC<IProduct> = ({
   };
 
   return (
-    <div id={product_id}>
-      <div className="card has-background-grey-light">
+      <div id={product_id} className="card has-background-grey-light">
         <header className="card-header">
           <p className="card-header-title">{name}</p>
         </header>
@@ -85,7 +84,7 @@ const ProductCard: React.FC<IProduct> = ({
           </a>
         </footer>
       </div>
-    </div>
+
   );
 };
 

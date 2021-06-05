@@ -9,12 +9,12 @@ import { IProduct, SaleModel } from '../../types/types';
 const Sale: React.FC = () => {
   const [cardList, setCards] = useState([]);
   const [saleState, setProducts] = useState([]);
-  const [totalState, setTotal] = useState(0)
+  const [totalState, setTotal] = useState(0);
   const value: SaleModel = {
     saleState,
     setProducts,
     totalState,
-    setTotal
+    setTotal,
   };
   const getCards = async () => {
     const newProducts = await axios.get('/product');
@@ -26,27 +26,21 @@ const Sale: React.FC = () => {
   }, []);
   return (
     <SaleContext.Provider value={value}>
+      <h1 className="items-header">Add an item</h1>
       <div className="main">
-        <div className="sale-container">
-          <div className="sale-col">
-            <h1 className="items-header">Add an item</h1>
-            <div className="item-col col-md-12">
-              {cardList.map(
-                ({ name, price, quantity, product_id }: IProduct) => (
-                  <ProductCard
-                    name={name}
-                    price={price}
-                    quantity={quantity}
-                    product_id={product_id}
-                    key={product_id}
-                  />
-                ),
-              )}
-            </div>
+          <div className="item-row">
+            {cardList.map(({ name, price, quantity, product_id }: IProduct) => (
+              <ProductCard
+                name={name}
+                price={price}
+                quantity={quantity}
+                product_id={product_id}
+                key={product_id}
+              />
+            ))}
           </div>
-          <SalesDocket />
-        </div>
       </div>
+      <SalesDocket />
     </SaleContext.Provider>
   );
 };

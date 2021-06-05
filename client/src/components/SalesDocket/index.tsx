@@ -33,7 +33,7 @@ const SalesDocket: React.FC = () => {
 
 
   return (
-    <div className="sales-row">
+    <div className="transaction-col">
       <div className="invoice-col">
         <div className="invoice-header">
           <Chevron className="chevron" />

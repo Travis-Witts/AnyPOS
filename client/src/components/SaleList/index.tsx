@@ -10,14 +10,13 @@ const SaleList: React.FC = () => {
   useEffect(() => {
   }, []);
   return (
-    <div className="table-header">
-      <th className="table-header">
-        <td className="table-header">Name</td>
-        <td className="table-header">Price $</td>
-        <td className="table-header">Quantity</td>
-      </th>
+    <div className="container">
+
+        <div id="col-name" className="sale-product-col">Name</div>
+        <div id="col-price" className="sale-product-col">Price $</div>
+        <div id="col-quantity" className="sale-product-col">Quantity</div>
       {saleState.length ? (
-        <ul className="list-group table-header">
+        <ul className="list-group">
           {saleState.map((product: IProduct) => (
             <SaleProduct
               product_id={product.product_id}
@@ -28,7 +27,7 @@ const SaleList: React.FC = () => {
           ))}
         </ul>
       ) : (
-        <h4>No Products to display.</h4>
+        <ul>No Products to display.</ul>
       )}
     </div>
   );

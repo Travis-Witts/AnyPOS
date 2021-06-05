@@ -29,7 +29,6 @@ const AccountContainer: React.FC = () => {
   }, []);
 
   return (
-    <div className="main">
       <div className="account-container">
         <div className="analysis-col">
           <h1>Daily Sales Analysis:</h1>
@@ -67,7 +66,6 @@ const AccountContainer: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

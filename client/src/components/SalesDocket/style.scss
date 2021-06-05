@@ -11,13 +11,13 @@
   flex-direction: row;
 }
 
-.sales-row {
-  position: fixed;
-  bottom: 0;
-  right: 0;
+.invoice-col {
+  width: 100%;
+}
+.transaction-col {
+  grid-area: sidebar;
   display: flex;
   flex-direction: row;
-  height: 100vh;
   background-color: $bg-primary;
 }
 
@@ -32,7 +32,6 @@
 
 .current-invoice {
   background-color: $text-secondary;
-  width: 30rem;
   overflow-y: scroll;
   height: 50%;
 }
@@ -102,17 +101,14 @@
 
 .chevron {
   fill: $text-primary;
-  position: absolute;
-  left: 1rem;
-  top: 1.5rem;
   cursor: pointer;
 }
 
 @media only screen and (max-width: 1350px) {
     .sales-row {
-      width: 100vw;
+      width: 100%;
     }
-    .invoice-col {
+    .transaction-col {
         width:100%;
     }
     .current-invoice {
