@@ -6,11 +6,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Sale from './components/pages/SalePage';
 import LoginContainer from './components/LoginContainer';
-import ProfileContainer from './components/ProfileContainer';
 import EditContainer from './components/EditShopPage';
 import { SaleModel } from './types/types';
 import SaleContext from './context/SaleContext';
 import MobileDocketPage from './components/pages/MobileDocketPage';
+import SettingsPage from './components/pages/SettingsPage';
 
 const App: React.FC = () => {
   const [userIdLogin, setLoggedIn] = useState('');
@@ -57,7 +57,7 @@ const App: React.FC = () => {
             <Sale />
           </Route>
 
-          <Route exact path="/Sale">
+          <Route exact path="/sale">
             <MobileDocketPage />
           </Route>
 
@@ -66,7 +66,7 @@ const App: React.FC = () => {
           </Route>
 
           <Route exact path="/profile">
-            <ProfileContainer />
+            <SettingsPage />
           </Route>
         </Switch>
       </Router>

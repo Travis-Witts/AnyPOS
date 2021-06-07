@@ -6,7 +6,7 @@ $text-dark: black;
 
 $bg-primary: #23232e;
 $bg-secondary: #141418;
-$bg-body: #454545;
+$bg-body: #e4e4e4;
 
 $bg-logout: #ff4561;
 $bg-icon: #7e5799;
@@ -24,9 +24,6 @@ $bg-icon: #7e5799;
   .App {
     grid-template-columns: 1fr 30fr;
     grid-template-areas:
-      'nav  content'
-      'nav  content'
-      'nav  content'
       'nav  content';
   }
 }
