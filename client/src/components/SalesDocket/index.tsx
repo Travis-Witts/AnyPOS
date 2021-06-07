@@ -1,9 +1,8 @@
 /* eslint-disable radix */
 import React, { useContext, useRef, useState } from 'react';
-import { Form, Button } from 'react-bulma-components';
+import { Button } from 'react-bulma-components';
 import './style.scss';
 import axios from 'axios';
-import { ReactComponent as Chevron } from '../assets/icons/chevron.svg';
 import SaleList from '../SaleList';
 import { SaleModel } from '../../types/types';
 import SaleContext from '../../context/SaleContext';
