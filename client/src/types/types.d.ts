@@ -1,7 +1,8 @@
 export type IProductEdit = {
-  name: string | undefined;
+  name: string;
   price: number;
   quantity: number;
+  product_id: string;
 };
 
 export type IProduct = {
@@ -19,8 +20,8 @@ export type StoreModel = {
 }
 
 export type EditModel = {
-  productsState: IProduct[] | [];
-  setProducts: any;
+  productsEditState: IProductEdit[] | [];
+  setEditProducts: any;
 }
 
 export type LoginProps = {
@@ -30,6 +31,11 @@ export type LoginProps = {
 export type DiscountType = {
   discountState: number;
   setDiscount: (value: number) => void;
+}
+
+export type ISearch = {
+  searchState: IProduct[] | [];
+  setSearch: any;
 }
 
 export type ISaleProduct = {

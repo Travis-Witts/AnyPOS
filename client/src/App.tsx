@@ -6,11 +6,14 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Sale from './components/pages/SalePage';
 import LoginContainer from './components/LoginContainer';
-import EditContainer from './components/EditShopPage';
-import { SaleModel } from './types/types';
+import { SaleModel, EditModel } from './types/types';
 import SaleContext from './context/SaleContext';
+import ProductContext from './context/ProductContext';
 import MobileDocketPage from './components/pages/MobileDocketPage';
 import SettingsPage from './components/pages/SettingsPage';
+import EditStorePage from './components/pages/EditStorePage';
+import AddItemsPage from './components/pages/AddItemsPage';
+import EditStockPage from './components/pages/EditStockPage';
 
 const App: React.FC = () => {
   const [userIdLogin, setLoggedIn] = useState('');
@@ -18,6 +21,12 @@ const App: React.FC = () => {
   const [loadingState, setLoading] = useState(false);
   const [saleState, setProducts] = useState([]);
   const [totalState, setTotal] = useState(0);
+  const [productsEditState, setEditProducts] = useState([])
+
+  const editValue: EditModel = {
+    productsEditState,
+    setEditProducts
+  }
 
   const value: SaleModel = {
     saleState,
@@ -49,6 +58,7 @@ const App: React.FC = () => {
   }
   return (
     <SaleContext.Provider value={value}>
+      <ProductContext.Provider value={editValue}>
       <div className="App">
         <Router>
           <Navbar setLogin={setLoggedIn} />
@@ -63,16 +73,18 @@ const App: React.FC = () => {
 
             <Route exact path="/receipt"></Route>
 
-            <Route exact path="/editstore"></Route>
-
-            <Route exact path="/additems"></Route>
+            <Route exact path="/editstore">
+            <EditStorePage />
+            </Route>
+            
+            <Route exact path="/additems">
+              <AddItemsPage />
+            </Route>
 
             <Route exact path="/daily"></Route>
 
-            <Route exact path="/editstock"></Route>
-
-            <Route exact path="/edit">
-              <EditContainer storeId={storeIdLogin} />
+            <Route exact path="/editstock">
+              <EditStockPage />
             </Route>
 
             <Route exact path="/profile">
@@ -81,6 +93,7 @@ const App: React.FC = () => {
           </Switch>
         </Router>
       </div>
+      </ProductContext.Provider>
     </SaleContext.Provider>
   );
 };
