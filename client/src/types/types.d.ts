@@ -46,3 +46,5 @@ export type SaleModel = {
   totalState: number;
   setTotal: (value: number) => void;
 }
+
+export type IHook = () => boolean;
