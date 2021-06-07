@@ -16,13 +16,12 @@
 }
 .transaction-col {
   grid-area: sidebar;
-  display: flex;
-  flex-direction: row;
   background-color: $bg-primary;
+  height: 100%;
 }
 
 .current-invoice::-webkit-scrollbar-track {
-  background: $text-secondary;
+  background: $bg-primary;
 }
 
 .current-invoice::-webkit-scrollbar-thumb {
@@ -34,12 +33,12 @@
   background-color: $text-secondary;
   overflow-y: scroll;
   height: 50%;
+  width: 100%;
 }
 
 .sale-btn {
-  margin: 0.5rem;
   height: 10rem;
-  width: 15rem;
+  width: 100%;
 }
 
 .invoice-header {
@@ -92,6 +91,7 @@
 
 .total-form {
   margin-left: 3rem;
+  width: 100%;
 }
 
 .pay-form {
@@ -99,25 +99,3 @@
   cursor: default;
 }
 
-.chevron {
-  fill: $text-primary;
-  cursor: pointer;
-}
-
-@media only screen and (max-width: 1350px) {
-    .sales-row {
-      width: 100%;
-    }
-    .transaction-col {
-        width:100%;
-    }
-    .current-invoice {
-      width: 100%;
-    }
-    .invoice-header {
-        width: 100%;
-    }
-    .invoice-footer {
-        width: 100%
-    }
-  }

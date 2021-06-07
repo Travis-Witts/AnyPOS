@@ -27,7 +27,7 @@ const SaleList: React.FC = () => {
           ))}
         </ul>
       ) : (
-        <ul>No Products to display.</ul>
+        <ul className="no-products">No Products to display.</ul>
       )}
     </div>
   );

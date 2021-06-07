@@ -28,7 +28,7 @@
     height: 20px;
 }
 
-.item-price {
+.item-price, .no-products {
     grid-column: 2;
     height: 20px;
 }
@@ -36,4 +36,9 @@
 .item-quantity {
     grid-column: 3;
     height: 20px;
+}
+
+.sale-product-col {
+    height: 2rem;
+    background-color: $bg-primary;
 }

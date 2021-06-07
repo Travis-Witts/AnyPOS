@@ -9,6 +9,7 @@ import { ReactComponent as Tag } from '../assets/icons/tag.svg';
 import { ReactComponent as Settings } from '../assets/icons/settings.svg';
 import { ReactComponent as List } from '../assets/icons/list.svg';
 import { LoginProps } from '../../types/types';
+import { IsDesktopOrLaptop } from '../../utils/responsiveHooks'
 
 
 const Navbar: React.FC<LoginProps> = (Props: LoginProps) => {
@@ -17,6 +18,9 @@ const Navbar: React.FC<LoginProps> = (Props: LoginProps) => {
     await axios.post('/user/logout');
     Props.setLogin('')
   };
+  
+
+
   return (
     <div className="sidebar">
       <ul className="sidebar-nav">
@@ -31,20 +35,16 @@ const Navbar: React.FC<LoginProps> = (Props: LoginProps) => {
             <Tag className="link-img" />
             <span className="link-text">New Sale</span>
           </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink to="/receipt" className="nav-link">
-            <List className="link-img" />
-            <span className="link-text">Receipts</span>
-          </NavLink>
-        </li>
-        <li  id="store" className="nav-item">
-          <NavLink exact to="/edit" className="nav-link">
-            <Profile className="link-img" />
-            <span className="link-text">Stock</span>
-          </NavLink>
-        </li>
-        <li className="nav-item">
+        </li> {!IsDesktopOrLaptop() &&
+                <li className="nav-item mobile-display">
+                <NavLink to="/sale" className="nav-link">
+                  <List className="link-img" />
+                  <span className="link-text">Sale Items</span>
+                </NavLink>
+              </li>
+        }
+
+        <li id="store" className="nav-item">
           <NavLink exact to="/profile" className="nav-link">
             <Settings className="link-img" />
             <span className="link-text">Profile</span>

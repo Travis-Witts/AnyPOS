@@ -14,6 +14,7 @@ const SalesDocket: React.FC = () => {
   const gstRef = useRef<HTMLInputElement>(null);
   const totalRef = useRef<HTMLInputElement>(null);
   const discountRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
 
   const discountHandler = () => {
     if (discountRef.current) {
@@ -35,10 +36,9 @@ const SalesDocket: React.FC = () => {
   return (
     <div className="transaction-col">
         <div className="invoice-header">
-          <Chevron className="chevron" />
           <h1>New Sale</h1>
         </div>
-        <div className="current-invoice container-fluid">
+        <div className="current-invoice">
           <SaleList />
         </div>
         <div className="invoice-footer">
@@ -54,7 +54,11 @@ const SalesDocket: React.FC = () => {
           </div>
           <div className="payment-row">
             <p>Email</p>
-            <Form.Input className="email-form" />
+            <input
+              type="email"
+              className="total-form pay-form"
+              ref={emailRef}
+            />
           </div>
           <div className="payment-row">
             GST
