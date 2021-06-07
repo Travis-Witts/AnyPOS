@@ -1,0 +1,73 @@
+@import '../../../App.scss';
+
+
+
+.account-header {
+    grid-area: header;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    vertical-align:middle;
+    color: black;
+    font-weight: bold;
+    font-size: 32px;
+}
+.card-setting {
+    height: 100%;
+    width: 100%;
+    background-color: $bg-primary;
+    border-radius: 20px;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.item-svg {
+    fill: $text-primary;
+}
+
+.card-setting:hover {
+    box-shadow: none;
+    background-color: $bg-secondary;
+}
+
+.edit-store {
+    grid-area: store;
+
+}
+.receipts {
+    grid-area: receipts;
+}
+.new-items {
+    grid-area: new;
+}
+.daily-sales {
+    grid-area: daily;
+}
+.edit-items {
+    grid-area: edit;
+}
+.account-container {
+    height: 100%;
+    width: 100%;
+    display:grid;
+    grid-area: content;
+    gap:20px;
+    grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
+    grid-template-rows: 4fr 4fr 4fr 4fr;
+    grid-template-areas: 
+    'header header header header header'
+    'lborder receipts store new rborder'
+    'lborder daily border edit rborder';
+}
+.card-h2 {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.svg-span {
+    vertical-align: baseline;
+}
