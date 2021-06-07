@@ -38,6 +38,7 @@ module.exports = {
     '@typescript-eslint/naming-convention' : 'off',
     '@typescript-eslint/no-unsafe-call' : 'off',
     '@typescript-eslint/no-explicit-any' : 'off',
+    '@typescript-eslint/no-unsafe-return' : 'off',
     'no-void': 'off',
     'no-alert': 'off',
     'import/extensions': [
