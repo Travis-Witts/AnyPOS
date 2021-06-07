@@ -2,7 +2,6 @@ import React from 'react';
 import './style.scss';
 import axios from 'axios';
 import { NavLink } from "react-router-dom";
-import { ReactComponent as Profile } from '../assets/icons/profile.svg';
 import { ReactComponent as Logout } from '../assets/icons/logout.svg';
 import { ReactComponent as POS } from '../assets/icons/pos.svg';
 import { ReactComponent as Tag } from '../assets/icons/tag.svg';
