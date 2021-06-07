@@ -20,24 +20,24 @@ $bg-icon: #7e5799;
   width: 100%;
 }
 
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 1025px) {
   .App {
-    grid-template-columns: 1fr 20fr 10fr;
+    grid-template-columns: 1fr 30fr;
     grid-template-areas:
-      'nav  header sidebar'
-      'nav  content sidebar'
-      'nav  content sidebar'
-      'nav  content sidebar';
+      'nav  content'
+      'nav  content'
+      'nav  content'
+      'nav  content';
   }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1024px) {
   .App {
-    grid-template-columns: 5fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 21fr 1fr;
     grid-template-areas:
-      'content  sidebar'
-      'content sidebar'
-      'content sidebar'
-      'nav  nav';
+      'content'
+      'content'
+      'nav ';
   }
 }
 

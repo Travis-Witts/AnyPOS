@@ -4,16 +4,27 @@ import axios from 'axios';
 import './App.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Sale from './components/Sale';
-import Receipts from './components/Receipts';
+import Sale from './components/pages/SalePage';
 import LoginContainer from './components/LoginContainer';
 import ProfileContainer from './components/ProfileContainer';
 import EditContainer from './components/EditShopPage';
+import { SaleModel } from './types/types';
+import SaleContext from './context/SaleContext';
+import MobileDocketPage from './components/pages/MobileDocketPage';
 
 const App: React.FC = () => {
   const [userIdLogin, setLoggedIn] = useState('');
   const [storeIdLogin, setStore] = useState('');
   const [loadingState, setLoading] = useState(false);
+  const [saleState, setProducts] = useState([]);
+  const [totalState, setTotal] = useState(0);
+
+  const value: SaleModel = {
+    saleState,
+    setProducts,
+    totalState,
+    setTotal,
+  };
 
   const setAuth = async () => {
     setLoading(true);
@@ -37,6 +48,7 @@ const App: React.FC = () => {
     return <LoginContainer setLogin={setLoggedIn} />;
   }
   return (
+    <SaleContext.Provider value={value}>
     <div className="App">
       <Router>
         <Navbar setLogin={setLoggedIn} />
@@ -45,8 +57,8 @@ const App: React.FC = () => {
             <Sale />
           </Route>
 
-          <Route exact path="/receipt">
-            <Receipts />
+          <Route exact path="/Sale">
+            <MobileDocketPage />
           </Route>
 
           <Route exact path="/edit">
@@ -59,6 +71,7 @@ const App: React.FC = () => {
         </Switch>
       </Router>
     </div>
+    </SaleContext.Provider>
   );
 };
 
