@@ -49,28 +49,38 @@ const App: React.FC = () => {
   }
   return (
     <SaleContext.Provider value={value}>
-    <div className="App">
-      <Router>
-        <Navbar setLogin={setLoggedIn} />
-        <Switch>
-          <Route exact path="/">
-            <Sale />
-          </Route>
+      <div className="App">
+        <Router>
+          <Navbar setLogin={setLoggedIn} />
+          <Switch>
+            <Route exact path="/">
+              <Sale />
+            </Route>
 
-          <Route exact path="/sale">
-            <MobileDocketPage />
-          </Route>
+            <Route exact path="/sale">
+              <MobileDocketPage />
+            </Route>
 
-          <Route exact path="/edit">
-            <EditContainer storeId={storeIdLogin} />
-          </Route>
+            <Route exact path="/receipt"></Route>
 
-          <Route exact path="/profile">
-            <SettingsPage />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+            <Route exact path="/editstore"></Route>
+
+            <Route exact path="/additems"></Route>
+
+            <Route exact path="/daily"></Route>
+
+            <Route exact path="/editstock"></Route>
+
+            <Route exact path="/edit">
+              <EditContainer storeId={storeIdLogin} />
+            </Route>
+
+            <Route exact path="/profile">
+              <SettingsPage />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
     </SaleContext.Provider>
   );
 };
