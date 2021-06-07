@@ -1,0 +1,92 @@
+@import '../../../App.scss';
+
+.edit-items-header {
+  grid-area: header;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  color: black;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.edit-items-container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-area: content;
+  gap: 20px;
+  grid-template-columns: 1fr 12fr 1fr;
+  grid-template-rows: 4fr 16fr 4fr;
+  grid-template-areas:
+    'header header  header'
+    'back items  rborder'
+    'lborder bborder rborder';
+    overflow: hidden;
+}
+
+.edit-back-arrow {
+  padding-left: 20px;
+  grid-area: back;
+}
+
+.edit-item-card {
+  grid-area: items;
+  grid-template-columns: 1fr 12fr 1fr;
+  grid-template-rows: 4fr 16fr 4fr;
+  grid-template-areas:
+    'header header  header'
+    'back items  rborder'
+    'lborder bborder rborder';
+    overflow: hidden;
+}
+
+.stock-container {
+    grid-area: items;
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-column: repeat(5,1fr);
+    overflow-y: scroll;
+}
+
+#col-edit-name {
+    grid-column: 1;
+}
+
+#col-edit-cost {
+    grid-column:2;
+}
+
+#col-edit-price {
+    grid-column: 3;
+}
+
+#col-edit-quantity {
+    grid-column: 4;
+}
+
+#col-edit-actions {
+    grid-column: 5;
+}
+
+.col-edit-name {
+    grid-column: 1;
+}
+
+.col-edit-cost {
+    grid-column:2;
+}
+
+.col-edit-price {
+    grid-column: 3;
+}
+
+.col-edit-quantity {
+    grid-column: 4;
+}
+
+.col-edit-actions {
+    grid-column: 5;
+}

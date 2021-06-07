@@ -14,7 +14,7 @@ const EditProduct: React.FC<IProduct> = ({
 }: IProduct) => {
   const [priceState, setPrice] = useState<number | undefined>(0);
   const [quantityState, setQuantity] = useState<number | undefined>(0);
-  const { setProducts } = useContext(ProductContext)
+  const { setEditProducts } = useContext(ProductContext)
 
 
   // Product references
@@ -29,7 +29,7 @@ const EditProduct: React.FC<IProduct> = ({
     };
     await axios.delete('/product', config);
     const newProducts = await axios.get('/product')
-    setProducts(newProducts.data)
+    setEditProducts(newProducts.data)
   };
   const saveHandler = async () => {
     await axios.put('/product', {
@@ -38,7 +38,7 @@ const EditProduct: React.FC<IProduct> = ({
       quantity: productQuantityRef.current?.value,
     });
     const newProducts = await axios.get('/product')
-    setProducts(newProducts.data)
+    setEditProducts(newProducts.data)
   };
 
   useEffect(() => {
@@ -47,35 +47,27 @@ const EditProduct: React.FC<IProduct> = ({
   }, []);
 
   return (
-    <tr className="product-row">
-      <td>
-        <p>(Current)</p>
+    <React.Fragment>
+      <div className="col-edit-name">
         <p>{name}</p>
-      </td>
-      <td>
-        <input
-          className="input-col"
-          disabled
-          type="text"
-          value={quantityState}
-        />
+      </div>
+      <div className="col-edit-quantity">
         <input
           className="input-col"
           type="text"
-          defaultValue={quantityState}
+          defaultValue={quantity}
           ref={productQuantityRef}
         />
-      </td>
-      <td>
-        <input className="input-col" disabled type="text" value={priceState} />
+      </div>
+      <div className="col-edit-price">
         <input
           className="input-col"
           type="text"
-          defaultValue={priceState}
+          defaultValue={price}
           ref={productPriceRef}
         />
-      </td>
-      <td>
+      </div>
+      <div className="col-edit-actions">
         <button
           className="btn btn-outline-dark"
           onClick={deleteHandler}
@@ -90,9 +82,8 @@ const EditProduct: React.FC<IProduct> = ({
         >
           Save
         </button>
-      </td>
-      <hr />
-    </tr>
+      </div>
+      </React.Fragment>
   );
 };
 
