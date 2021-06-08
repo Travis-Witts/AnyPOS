@@ -27,6 +27,9 @@ Transaction.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    paymentIntent: {
+      type: DataTypes.STRING,
+    }
   },
   {
     sequelize,
