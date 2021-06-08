@@ -5,7 +5,7 @@ import './style.scss';
 import axios from 'axios';
 import SalesDocket from '../../SalesDocket';
 import ProductCard from '../../ProductCard';
-import { IProduct } from '../../../types/types';
+import { newSaleProduct } from '../../../types/types';
 import {
   IsDesktopOrLaptop,
   IsTablet
@@ -21,7 +21,6 @@ const Sale: React.FC = () => {
     const newProducts = await axios.get('/product');
     setCards(newProducts.data);
     setSearch(newProducts.data);
-    console.log(newProducts.data);
   };
 
   const handleInputChange = () => {
@@ -56,8 +55,8 @@ const Sale: React.FC = () => {
           </div>
           <div className="main">
             <div className="item-row">
-              {searchState.map(
-                ({ name, price, quantity, product_id }: IProduct) => (
+              {searchState.length && searchState.map(
+                ({ name, price, quantity, product_id }: newSaleProduct) => (
                   <ProductCard
                     name={name}
                     price={price}
@@ -77,7 +76,7 @@ const Sale: React.FC = () => {
           <div className="sale-header">
             <h1 className="items-header">Search for an item:</h1>
             <input
-              className="sale-search"
+              className="sale-search" 
               type="text"
               ref={searchRef}
               onChange={handleInputChange}
@@ -85,8 +84,8 @@ const Sale: React.FC = () => {
           </div>
           <div className="main">
             <div className="item-row">
-              {searchState.map(
-                ({ name, price, quantity, product_id }: IProduct) => (
+              {searchState.length && searchState.map(
+                ({ name, price, quantity, product_id }: newSaleProduct) => (
                   <ProductCard
                     name={name}
                     price={price}

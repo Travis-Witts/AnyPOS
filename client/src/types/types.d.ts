@@ -1,5 +1,7 @@
 export type IProductEdit = {
   name: string;
+  description: string;
+  cost: number;
   price: number;
   quantity: number;
   product_id: string;
@@ -7,10 +9,13 @@ export type IProductEdit = {
 
 export type IProduct = {
     name: string | undefined;
+    description: string;
+    cost: number;
     price: number;
     quantity: number;
     product_id: string;
   };
+  
 
 export type StoreModel = {
     saleState: IProduct[] | [];
@@ -54,3 +59,10 @@ export type SaleModel = {
 }
 
 export type IHook = () => boolean;
+
+export type newSaleProduct = {
+  name: string | undefined;
+  price: number;
+  quantity: number;
+  product_id: string;
+}
