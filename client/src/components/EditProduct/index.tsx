@@ -51,12 +51,11 @@ const EditProduct: React.FC<IProduct> = ({
       <div className="col-edit-name">
         <p>{name}</p>
       </div>
-      <div className="col-edit-quantity">
+      <div className="col-edit-cost">
         <input
           className="input-col"
           type="text"
-          defaultValue={quantity}
-          ref={productQuantityRef}
+          defaultValue={price}
         />
       </div>
       <div className="col-edit-price">
@@ -65,6 +64,14 @@ const EditProduct: React.FC<IProduct> = ({
           type="text"
           defaultValue={price}
           ref={productPriceRef}
+        />
+      </div>
+      <div className="col-edit-quantity">
+        <input
+          className="input-col"
+          type="text"
+          defaultValue={quantity}
+          ref={productQuantityRef}
         />
       </div>
       <div className="col-edit-actions">

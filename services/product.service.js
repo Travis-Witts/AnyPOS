@@ -1,10 +1,12 @@
 const { Product } = require("../models");
 
-exports.createProduct = async (name, price, quantity, store_id) => {
+exports.createProduct = async (name, description, price, cost, quantity, store_id) => {
   try {
-    const newProduct = Product.create({
+    const newProduct = await Product.create({
       name: name,
+      description: description,
       price: price,
+      cost: cost,
       quantity: quantity,
       store_id: store_id,
     });
@@ -53,18 +55,12 @@ exports.getOne = async (product_id) => {
   }
 };
 
-exports.editStock = async (product_id, value, quantity) => {
+exports.editStock = async (product_id, price, cost, quantity) => {
   try {
-    const stock = await Product.findOne({
-      where: {
-        product_id: product_id,
-      },
-    });
-    const newQuantity = stock.quantity + quantity;
-
     const updatedStore = await Product.update(
       {
-        price: value,
+        price: price,
+        cost: cost,
         quantity: quantity,
       },
       {

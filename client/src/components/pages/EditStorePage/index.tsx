@@ -13,6 +13,7 @@ const EditStorePage: React.FC = () => {
                 <p className="edit-store-h2">
                     Edit Name
                 </p>
+                <input type="text" />
             </div>
             <div className="edit-description edit-cards">
             <p className="edit-store-h2">

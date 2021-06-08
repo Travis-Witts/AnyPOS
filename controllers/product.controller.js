@@ -2,13 +2,19 @@ const ProductService = require("../services/product.service");
 
 exports.createProduct = async (req, res, next) => {
   const name = req.body.name;
+  const description = req.body.desc;
   const price = req.body.price;
+  const cost = req.body.cost;
   const quantity = req.body.quantity;
   const store_id = req.session.store_id;
+  console.log(req.body)
+  console.log(req.session)
   try {
     const product = await ProductService.createProduct(
       name,
+      description,
       price,
+      cost,
       quantity,
       store_id
     );
@@ -54,14 +60,11 @@ exports.getOneProduct = async (req, res, next) => {
 
 exports.editStock = async (req, res, next) => {
   const product_id = req.body.id;
-  const value = req.body.value;
+  const price = req.body.price;
+  const cost = req.body.cost;
   const quantity = req.body.quantity;
-  console.log(product_id)
-  console.log(value);
-  console.log(quantity)
-
   try {
-    const updatedProduct = await ProductService.editStock(product_id, value, quantity);
+    const updatedProduct = await ProductService.editStock(product_id, price, cost, quantity);
     res.status(200).json(updatedProduct);
   } catch (error) {
     res.status(400).json(error.message);

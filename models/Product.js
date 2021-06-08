@@ -18,6 +18,17 @@ Product.init(
         len: [1, 50],
       },
     },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 150],
+      },
+    },
+    cost: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     price: {
       type: DataTypes.INTEGER,
       allowNull: false,

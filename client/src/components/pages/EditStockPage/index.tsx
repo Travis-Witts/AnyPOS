@@ -7,17 +7,18 @@ import axios from 'axios';
 import { ReactComponent as Arrow } from '../../assets/icons/arrow.svg';
 import EditProduct from '../../EditProduct';
 import ProductContext from '../../../context/ProductContext';
-import { EditModel, IProduct, ISearch } from '../../../types/types'
+import { EditModel, IProduct } from '../../../types/types';
 
 const EditStockPage: React.FC = () => {
-    const {productsEditState, setEditProducts} = useContext<EditModel>(ProductContext);
-    const [searchState, setSearch] = useState<IProduct[] | []>([]);
-    const searchRef = useRef<HTMLInputElement>(null);
+  const { productsEditState, setEditProducts } =
+    useContext<EditModel>(ProductContext);
+  const [searchState, setSearch] = useState<IProduct[] | []>([]);
+  const searchRef = useRef<HTMLInputElement>(null);
 
   const getProducts = async () => {
     const products = await axios.get('/product');
     setEditProducts(products.data);
-    setSearch(products.data)
+    setSearch(products.data);
   };
 
   const handleInputChange = () => {
@@ -34,7 +35,6 @@ const EditStockPage: React.FC = () => {
     setSearch(matches);
   };
 
-    
   useEffect(() => {
     void getProducts();
   }, []);
@@ -47,7 +47,12 @@ const EditStockPage: React.FC = () => {
       <div className="edit-item-card edit-cards">
         <div className="search-section">
           <p className="edit-store-h2">Search:</p>
-          <input className="sale-search" type="text" ref={searchRef} onChange={handleInputChange} />
+          <input
+            className="sale-search"
+            type="text"
+            ref={searchRef}
+            onChange={handleInputChange}
+          />
         </div>
         <div className="stock-container">
           <div id="col-edit-name" className="sale-product-col">
@@ -66,20 +71,21 @@ const EditStockPage: React.FC = () => {
             Actions
           </div>
           {searchState.length ? (
-              <React.Fragment>
-            {searchState.map((product: IProduct) => (
-              <EditProduct
-              product_id={product.product_id}
-                name={product.name}
-                price={product.price}
-                quantity={product.quantity}
-              />
-              
-            ))
-            } </React.Fragment>
-      ) : (
-        <h4>No Products to display.</h4>
-      )}
+            <React.Fragment>
+              {searchState.map((product: IProduct) => (
+                <EditProduct
+                cost={product.cost}
+                description={product.description}
+                  product_id={product.product_id}
+                  name={product.name}
+                  price={product.price}
+                  quantity={product.quantity}
+                />
+              ))}{' '}
+            </React.Fragment>
+          ) : (
+            <h4 className="col-edit-price">No Products to display.</h4>
+          )}
         </div>
       </div>
     </div>
