@@ -11,6 +11,10 @@ ProductTransaction.init(
       allowNull: false,
       primaryKey: true,
     },
+    store_id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+    },
     product_id: {
       type: DataTypes.UUID,
       allowNull: false,
@@ -31,6 +35,10 @@ ProductTransaction.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    cost: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     price: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -38,7 +46,7 @@ ProductTransaction.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: "ptransaction",

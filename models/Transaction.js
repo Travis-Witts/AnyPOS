@@ -27,15 +27,10 @@ Transaction.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-    },
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: "transaction",

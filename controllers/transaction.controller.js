@@ -15,13 +15,17 @@ exports.createTransaction = async (req, res, next) => {
     );
     const newArr = await stock.map((product) => {
       return {
+        store_id: store_id,
         price: product.price,
+        cost: product.cost,
         product_id: product.product_id,
         quantity: product.quantity,
         transaction_id: newTransaction.dataValues.transaction_id,
       };
     });
-    const transactionProducts = await ProductTransactionService.sellStock(newArr);
+    const transactionProducts = await ProductTransactionService.sellStock(
+      newArr
+    );
     res.status(200).json(newTransaction);
   } catch (error) {
     res.status(400).json(error.message);
@@ -70,11 +74,16 @@ exports.updateTotal = async (req, res, next) => {
 
 exports.getAllDaily = async (req, res, next) => {
   const store_id = req.session.store_id;
-
+  let totalPrice = 0;
+  let totalCost = 0;
   try {
     const dailySales = await ProductTransactionService.getAllDaily(store_id);
-    dailySales.dailyTotal = transactionSum(dailySales);
-    res.status(200).json(dailySales);
+    for (var i = 0; i < dailySales.length; i++) {
+      totalPrice += dailySales[i].quantity * dailySales[i].price;
+      totalCost += dailySales[i].quantity * dailySales[i].cost;
+    }
+    const totals = { totalPrice, totalCost, dailySales };
+    res.status(200).json(totals);
   } catch (error) {
     res.status(403).json(error);
   }
