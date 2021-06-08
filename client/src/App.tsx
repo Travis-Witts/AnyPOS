@@ -14,6 +14,7 @@ import SettingsPage from './components/pages/SettingsPage';
 import EditStorePage from './components/pages/EditStorePage';
 import AddItemsPage from './components/pages/AddItemsPage';
 import EditStockPage from './components/pages/EditStockPage';
+import DailySalesPage from './components/pages/DailySalesPage';
 
 const App: React.FC = () => {
   const [userIdLogin, setLoggedIn] = useState('');
@@ -81,7 +82,9 @@ const App: React.FC = () => {
               <AddItemsPage />
             </Route>
 
-            <Route exact path="/daily"></Route>
+            <Route exact path="/daily">
+              <DailySalesPage />
+            </Route>
 
             <Route exact path="/editstock">
               <EditStockPage />

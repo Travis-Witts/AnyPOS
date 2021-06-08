@@ -46,13 +46,14 @@ export type ISearch = {
 export type ISaleProduct = {
   name: string | undefined;
   price: number;
+  cost: number;
   quantity: number;
   product_id: string;
   transaction_id: string;
 };
 
 export type SaleModel = {
-  saleState: ISaleProduct[] | [];
+  saleState: newSaleProduct[] | [];
   setProducts: any;
   totalState: number;
   setTotal: (value: number) => void;
@@ -63,6 +64,7 @@ export type IHook = () => boolean;
 export type newSaleProduct = {
   name: string | undefined;
   price: number;
+  cost: number;
   quantity: number;
   product_id: string;
 }
