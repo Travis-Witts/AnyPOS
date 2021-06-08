@@ -20,6 +20,7 @@ const SaleList: React.FC = () => {
           {saleState.map((product: newSaleProduct) => (
             <SaleProduct
               product_id={product.product_id}
+              cost={product.cost}
               name={product.name}
               price={product.price}
               quantity={product.quantity}

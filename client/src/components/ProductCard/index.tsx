@@ -6,6 +6,7 @@ import { newSaleProduct, SaleModel } from '../../types/types';
 const ProductCard: React.FC<newSaleProduct> = ({
   name,
   price,
+  cost,
   quantity,
   product_id,
 }: newSaleProduct) => {
@@ -16,7 +17,7 @@ const ProductCard: React.FC<newSaleProduct> = ({
 
   const addHandler = (event: React.MouseEvent) => {
     event.preventDefault();
-    const newProduct: newSaleProduct = { name, price, quantity: 1, product_id };
+    const newProduct: newSaleProduct = { name, price, cost, quantity: 1, product_id };
     let exists = false;
     for (let i = 0; i < saleState.length; i += 1) {
       if (product_id === saleState[i].product_id) {
@@ -37,7 +38,7 @@ const ProductCard: React.FC<newSaleProduct> = ({
 
   const removeHandler = (event: React.MouseEvent) => {
     event.preventDefault();
-    const newProduct: newSaleProduct = { name, price, quantity: -1, product_id };
+    const newProduct: newSaleProduct = { name, price, cost, quantity: -1, product_id };
     let exists = false;
     for (let i = 0; i < saleState.length; i += 1) {
       if (product_id === saleState[i].product_id) {

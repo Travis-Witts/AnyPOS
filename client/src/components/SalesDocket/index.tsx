@@ -34,7 +34,9 @@ const SalesDocket: React.FC = () => {
       discount: discountState,
       stock: saleState
     }
-    await axios.post("/transaction/", newTransactionBody)    
+    await axios.post("/transaction/", newTransactionBody);
+    setProducts([]);
+    setTotal(0);
   }
 
 
