@@ -67,7 +67,6 @@ const StripeContainer: React.FC = () => {
     });
     console.log(result);
     if (result.error) {
-      // Show error to your customer (e.g., insufficient funds)
       console.log(result.error.message);
     }
     const newTransactionBody = {
@@ -79,7 +78,7 @@ const StripeContainer: React.FC = () => {
       setProducts([]);
       setTotal(0);
       setDiscount(0);
-      setOpen(false);
+      setOpen(false)
   };
 
   return (

@@ -1,3 +1,4 @@
 DB_NAME=database name
 DB_USER=database username
 DB_PASSWORD=database password
+STRIPE_SECRET_KEY= Stripe secret key

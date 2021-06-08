@@ -27,7 +27,7 @@ Transaction.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    paymentIntent: {
+    payment_intent: {
       type: DataTypes.STRING,
     }
   },

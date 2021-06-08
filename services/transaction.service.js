@@ -13,6 +13,20 @@ exports.createSale = async (store_id, total, discount) => {
   }
 };
 
+exports.createEFTPOSSale = async (store_id, paymentIntent, total, discount) => {
+  try {
+    const newSale = await Transaction.create({
+      store_id: store_id,
+      payment_intent: paymentIntent,
+      total: total,
+      discount: discount
+    });
+    return newSale;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 exports.updateTotal = async ({ transaction_id, value }) => {
   try {
     const updatedSale = await Transaction.update({

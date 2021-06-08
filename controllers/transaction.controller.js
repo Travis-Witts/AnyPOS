@@ -32,6 +32,7 @@ exports.createTransaction = async (req, res, next) => {
   }
 };
 
+
 exports.getAll = async (req, res, next) => {
   const store_id = req.session.store_id;
 
