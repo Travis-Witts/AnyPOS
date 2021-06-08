@@ -8,7 +8,7 @@ import { SaleModel } from '../../types/types';
 import SaleContext from '../../context/SaleContext';
 
 const SalesDocket: React.FC = () => {
-  const { totalState, saleState } = useContext<SaleModel>(SaleContext);
+  const { totalState, saleState, setProducts, setTotal } = useContext<SaleModel>(SaleContext);
   const [discountState, setDiscount] = useState<number>(0);
   const gstRef = useRef<HTMLInputElement>(null);
   const totalRef = useRef<HTMLInputElement>(null);
@@ -20,6 +20,12 @@ const SalesDocket: React.FC = () => {
       setDiscount(parseInt(discountRef.current.value));
     }
   };
+
+  const cancelHandler = (event: React.MouseEvent) => {
+    event.preventDefault();
+    setProducts([]);
+    setTotal(0);
+  }
 
   const transactionHandler = async (event: React.MouseEvent) => {
     event.preventDefault();
@@ -84,7 +90,13 @@ const SalesDocket: React.FC = () => {
             />
           </div>
           <Button onClick={transactionHandler} className="pay-btn" color="success">
-            Pay
+            Pay with Cash
+          </Button>
+          <Button className="pay-btn" color="info">
+            Pay with Stripe
+          </Button>
+          <Button onClick={cancelHandler} className="pay-btn" color="danger">
+            Cancel Order
           </Button>
         </div>
     </div>

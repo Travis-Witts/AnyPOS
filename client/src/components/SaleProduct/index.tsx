@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect } from 'react';
 import './style.scss';
-import { IProduct } from '../../types/types';
+import { newSaleProduct } from '../../types/types';
 
 
 
-const EditProduct: React.FC<IProduct> = ({
+const EditProduct: React.FC<newSaleProduct> = ({
   name,
   price,
   quantity,
-}: IProduct) => {
+}: newSaleProduct) => {
 
 
   // Product references

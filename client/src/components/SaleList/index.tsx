@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import './style.scss';
 import SaleProduct from '../SaleProduct';
 import SaleContext from '../../context/SaleContext'
-import { SaleModel, IProduct } from '../../types/types'
+import { SaleModel, newSaleProduct } from '../../types/types'
 
 const SaleList: React.FC = () => {
   const { saleState } = useContext<SaleModel>(SaleContext);
@@ -17,7 +17,7 @@ const SaleList: React.FC = () => {
         <div id="col-quantity" className="sale-product-col">Quantity</div>
       {saleState.length ? (
         <ul className="list-group">
-          {saleState.map((product: IProduct) => (
+          {saleState.map((product: newSaleProduct) => (
             <SaleProduct
               product_id={product.product_id}
               name={product.name}

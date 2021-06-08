@@ -32,7 +32,7 @@
 .current-invoice {
   background-color: $text-secondary;
   overflow-y: scroll;
-  height: 50%;
+  height: 45%;
   width: 100%;
 }
 
@@ -64,7 +64,9 @@
 }
 
 .pay-btn {
-  margin: 1.5rem;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+  margin-right: 1.5rem;
   width: 90%;
 }
 
@@ -99,3 +101,9 @@
   cursor: default;
 }
 
+@media only screen and (max-height: 850px) {
+  .current-invoice {
+    height: 30%;
+  }
+  
+}
