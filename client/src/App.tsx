@@ -22,6 +22,7 @@ const App: React.FC = () => {
   const [loadingState, setLoading] = useState(false);
   const [saleState, setProducts] = useState([]);
   const [totalState, setTotal] = useState(0);
+  const [discountState, setDiscount] = useState(0);
   const [productsEditState, setEditProducts] = useState([])
 
   const editValue: EditModel = {
@@ -34,6 +35,8 @@ const App: React.FC = () => {
     setProducts,
     totalState,
     setTotal,
+    discountState,
+    setDiscount
   };
 
   const setAuth = async () => {

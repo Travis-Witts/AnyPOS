@@ -3,6 +3,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './style.scss';
 import axios from 'axios';
+import {loadStripe} from '@stripe/stripe-js';
+import {Elements} from '@stripe/react-stripe-js';
 import SalesDocket from '../../SalesDocket';
 import ProductCard from '../../ProductCard';
 import { newSaleProduct } from '../../../types/types';
@@ -10,10 +12,19 @@ import {
   IsDesktopOrLaptop,
   IsTablet
 } from '../../../utils/responsiveHooks';
+import StripeContainer from '../../StripeContainer';
+import ModalContext from '../../../context/ModalContext';
 
 const Sale: React.FC = () => {
   const [cardList, setCards] = useState([]);
   const [searchState, setSearch] = useState([]);
+  const [isOpen, setOpen] = useState(false);
+  const stripePromise = loadStripe("pk_test_51J056TKarJexioXq6RbfKww72FBUGolmX3ycHTLS0syo11uRU55lF8YNzlUxCcuBOWJSTeNc3GE0NSrh9QrzeoWt006FIKBGDD");
+
+  const modalValue = {
+    isOpen,
+    setOpen
+  }
 
   const searchRef = useRef<HTMLInputElement>(null);
 
@@ -41,7 +52,8 @@ const Sale: React.FC = () => {
     void getCards();
   }, []);
   return (
-    <React.Fragment>
+    <Elements stripe={stripePromise}>
+    <ModalContext.Provider value={modalValue}>
       {IsDesktopOrLaptop() && (
         <div className="sale-desktop-content">
           <div className="sale-header">
@@ -101,7 +113,9 @@ const Sale: React.FC = () => {
           </div>
         </div>
       )}
-    </React.Fragment>
+      <StripeContainer />
+      </ModalContext.Provider>
+      </Elements>
   );
 };
 

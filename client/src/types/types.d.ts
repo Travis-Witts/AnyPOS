@@ -57,6 +57,8 @@ export type SaleModel = {
   setProducts: any;
   totalState: number;
   setTotal: (value: number) => void;
+  discountState: number;
+  setDiscount: (value: number) => void;
 }
 
 export type IHook = () => boolean;
@@ -67,4 +69,9 @@ export type newSaleProduct = {
   cost: number;
   quantity: number;
   product_id: string;
+}
+
+export type ModalModel = {
+  isOpen: boolean;
+  setOpen: any
 }

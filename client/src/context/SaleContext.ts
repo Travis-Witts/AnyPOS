@@ -6,6 +6,8 @@ const SaleContext = React.createContext<SaleModel>({
     setProducts: () => {},
     totalState: 0,
     setTotal: () => {},
+    discountState: 0,
+    setDiscount: () => {}
   });
 
 

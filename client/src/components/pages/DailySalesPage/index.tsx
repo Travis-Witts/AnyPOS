@@ -18,9 +18,10 @@ const DailySalesPage: React.FC = () => {
     setDailyState(dailySales.data.totalPrice);
     setCostState(dailySales.data.totalCost);
     setGpState(
-      ((dailySales.data.totalPrice / dailySales.data.totalCost) * 100).toFixed(
-        2,
-      ),
+      (
+        (dailySales.data.totalPrice / dailySales.data.totalCost) * 100 -
+        100
+      ).toFixed(2),
     );
     setProfitState(dailySales.data.totalPrice - dailySales.data.totalCost);
     setTaxState(dailySales.data.totalPrice * 0.1);
@@ -35,42 +36,56 @@ const DailySalesPage: React.FC = () => {
       <NavLink exact to="/profile" className="edit-back-arrow">
         <Arrow className="back-arrow" />
       </NavLink>
-      <div className="add-item edit-cards">
-        <p className="edit-store-h2">Total Revenue</p>
-        <input
-          disabled
-          className="new-item-input"
-          type="text"
-          value={`$${dailyState}`}
-        />
-        <p className="edit-store-h2">Total Cost</p>
-        <input
-          disabled
-          className="new-item-input"
-          type="text"
-          value={`$${costState}`}
-        />
-        <p className="edit-store-h2">Total Profit</p>
-        <input
-          disabled
-          className="new-item-input"
-          type="text"
-          value={`$${profitState}`}
-        />
-        <p className="edit-store-h2">Gross Profit %</p>
-        <input
-          disabled
-          className="new-item-input"
-          type="text"
-          value={`${gpState}%`}
-        />
-        <p className="edit-store-h2">Total Tax</p>
-        <input
-          disabled
-          className="new-item-input"
-          type="text"
-          value={`$${taxState}`}
-        />
+      <div className="daily-sales add-item edit-cards">
+        <p className="edit-store-h2">
+          Total Revenue{' '}
+          <input
+            disabled
+            className="new-item-input"
+            type="text"
+            value={`$${dailyState}`}
+          />
+        </p>
+
+        <p className="edit-store-h2">
+          Total Cost{' '}
+          <input
+            disabled
+            className="new-item-input"
+            type="text"
+            value={`$${costState}`}
+          />
+        </p>
+
+        <p className="edit-store-h2">
+          Total Profit{' '}
+          <input
+            disabled
+            className="new-item-input"
+            type="text"
+            value={`$${profitState}`}
+          />
+        </p>
+
+        <p className="edit-store-h2">
+          Gross Profit{' '}
+          <input
+            disabled
+            className="new-item-input"
+            type="text"
+            value={`${gpState}%`}
+          />
+        </p>
+
+        <p className="edit-store-h2">
+          Total Tax{' '}
+          <input
+            disabled
+            className="new-item-input"
+            type="text"
+            value={`$${taxState}`}
+          />
+        </p>
       </div>
     </div>
   );

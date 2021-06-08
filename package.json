@@ -26,6 +26,7 @@
     "if-env": "^1.0.4",
     "mysql2": "^2.2.5",
     "nodemailer": "^6.6.0",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.6.2",
+    "stripe": "^8.154.0"
   }
 }

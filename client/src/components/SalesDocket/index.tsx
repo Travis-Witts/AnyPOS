@@ -6,10 +6,11 @@ import axios from 'axios';
 import SaleList from '../SaleList';
 import { SaleModel } from '../../types/types';
 import SaleContext from '../../context/SaleContext';
+import ModalContext from '../../context/ModalContext';
 
 const SalesDocket: React.FC = () => {
-  const { totalState, saleState, setProducts, setTotal } = useContext<SaleModel>(SaleContext);
-  const [discountState, setDiscount] = useState<number>(0);
+  const { totalState, saleState, setProducts, setTotal, discountState, setDiscount } = useContext<SaleModel>(SaleContext);
+  const { isOpen, setOpen } = useContext(ModalContext);
   const gstRef = useRef<HTMLInputElement>(null);
   const totalRef = useRef<HTMLInputElement>(null);
   const discountRef = useRef<HTMLInputElement>(null);
@@ -25,6 +26,11 @@ const SalesDocket: React.FC = () => {
     event.preventDefault();
     setProducts([]);
     setTotal(0);
+  }
+
+  const stripeHandler = (event: React.MouseEvent) => {
+    event.preventDefault();
+    setOpen(true)
   }
 
   const transactionHandler = async (event: React.MouseEvent) => {
@@ -94,7 +100,7 @@ const SalesDocket: React.FC = () => {
           <Button onClick={transactionHandler} className="pay-btn" color="success">
             Pay with Cash
           </Button>
-          <Button className="pay-btn" color="info">
+          <Button onClick={stripeHandler} className="pay-btn" color="info">
             Pay with Stripe
           </Button>
           <Button onClick={cancelHandler} className="pay-btn" color="danger">
