@@ -52,36 +52,43 @@ const StripeContainer: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const CLIENT_SECRET = await axios.post("/payment", {total: totalState})
-    console.log(CLIENT_SECRET)
     if (!stripe || !elements) {
+      alert("Stripe failed to connect!");
+      setOpen(false)
       return;
     }
-
-    const result = await stripe.confirmCardPayment(CLIENT_SECRET.data, {
-      payment_method: {
-        card: elements.getElement(CardElement),
-        billing_details: {
-          name: 'Jenny Rosen',
+    try {
+      const result = await stripe.confirmCardPayment(CLIENT_SECRET.data, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+          billing_details: {
+            name: 'Jenny Rosen',
+          },
         },
-      },
-    });
-    console.log(result);
-    if (result.error) {
-      console.log(result.error.message);
-      alert("Payment error")
-    }else {
-    const newTransactionBody = {
-        total: totalState,
-        discount: discountState,
-        stock: saleState
+      });
+      console.log(result);
+      if (result.error) {
+        console.log(result.error.message);
+        alert("Payment error")
+      }else {
+      const newTransactionBody = {
+          total: totalState,
+          discount: discountState,
+          stock: saleState
+        }
+        await axios.post("/transaction/", newTransactionBody);
+        setProducts([]);
+        setTotal(0);
+        setDiscount(0);
+        setOpen(false)
+        alert ("Payment processed!")
       }
-      await axios.post("/transaction/", newTransactionBody);
-      setProducts([]);
-      setTotal(0);
-      setDiscount(0);
-      setOpen(false)
-      alert ("Payment processed!")
+    } catch (error) {
+      console.error(error);
+      alert("Transaction failed!")
     }
+
+
   };
 
   return (

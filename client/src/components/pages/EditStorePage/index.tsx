@@ -12,9 +12,15 @@ const EditStorePage: React.FC = () => {
   const [descState, setDesc] = useState("");
 
   const handleClick = async (event: React.MouseEvent) => {
-    const body = { name: nameRef.current?.value, description: descRef.current?.value};
-    const updatedStore = await axios.put("/store", body);
-    alert("Store has been updated successfully!")
+    event.preventDefault();
+    try {
+      const body = { name: nameRef.current?.value, description: descRef.current?.value};
+      await axios.put("/store", body);
+      alert("Store has been updated successfully!")
+    } catch (error) {
+      console.log(error);
+      alert("Updating of store failed!")
+    }
   }
 
   const getDetails = async () => {

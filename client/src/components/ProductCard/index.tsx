@@ -17,44 +17,55 @@ const ProductCard: React.FC<newSaleProduct> = ({
 
   const addHandler = (event: React.MouseEvent) => {
     event.preventDefault();
-    const newProduct: newSaleProduct = { name, price, cost, quantity: 1, product_id };
-    let exists = false;
-    for (let i = 0; i < saleState.length; i += 1) {
-      if (product_id === saleState[i].product_id) {
-        saleState[i].quantity += 1;
-        exists = true;
+    try {
+      if (quantityState === 0) {
+        throw new Error
       }
+      const newProduct: newSaleProduct = { name, price, cost, quantity: 1, product_id };
+      let exists = false;
+      for (let i = 0; i < saleState.length; i += 1) {
+        if (product_id === saleState[i].product_id) {
+          saleState[i].quantity += 1;
+          exists = true;
+        }
+      }
+      if (!exists) {
+        const newProducts: newSaleProduct[] = [...saleState, newProduct];
+        setProducts(newProducts);
+      } else {
+        const products: newSaleProduct[] = saleState;
+        setProducts(products);
+      }
+      setQuantity(quantityState - 1);
+      setTotal(totalState + price);
+    } catch (error) {
+      console.log("Out of stock!");
     }
-    if (!exists) {
-      const newProducts: newSaleProduct[] = [...saleState, newProduct];
-      setProducts(newProducts);
-    } else {
-      const products: newSaleProduct[] = saleState;
-      setProducts(products);
-    }
-    setQuantity(quantityState - 1);
-    setTotal(totalState + price);
   };
 
   const removeHandler = (event: React.MouseEvent) => {
     event.preventDefault();
-    const newProduct: newSaleProduct = { name, price, cost, quantity: -1, product_id };
-    let exists = false;
-    for (let i = 0; i < saleState.length; i += 1) {
-      if (product_id === saleState[i].product_id) {
-        saleState[i].quantity -= 1;
-        exists = true;
+    try {
+      const newProduct: newSaleProduct = { name, price, cost, quantity: -1, product_id };
+      let exists = false;
+      for (let i = 0; i < saleState.length; i += 1) {
+        if (product_id === saleState[i].product_id) {
+          saleState[i].quantity -= 1;
+          exists = true;
+        }
       }
+      if (!exists) {
+        const newProducts: newSaleProduct[] = [...saleState, newProduct];
+        setProducts(newProducts);
+      } else {
+        const products: newSaleProduct[] = saleState;
+        setProducts(products);
+      }
+      setQuantity(quantityState + 1);
+      setTotal(totalState - price);
+    } catch (error) {
+      console.log("Crediting stock failed!")
     }
-    if (!exists) {
-      const newProducts: newSaleProduct[] = [...saleState, newProduct];
-      setProducts(newProducts);
-    } else {
-      const products: newSaleProduct[] = saleState;
-      setProducts(products);
-    }
-    setQuantity(quantityState + 1);
-    setTotal(totalState - price);
   };
 
   return (

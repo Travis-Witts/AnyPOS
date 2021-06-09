@@ -33,12 +33,11 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
       storeName: storeInputRef.current?.value,
     };
     try {
-      const registeredUser= await axios.post('/user/', newUser);
+      const registeredUser = await axios.post('/user/', newUser);
       Props.setLogin(registeredUser.data.user.user_id);
     } catch (error) {
-      alert("Invalid Details. Please Try Again.")
+      alert('Invalid Details. Please Try Again.');
     }
-
   };
 
   const loginHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -51,8 +50,13 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
       const loggedUser: any = await axios.post('/user/login', loginUser);
       Props.setLogin(loggedUser.data.user.user_id);
     } catch (error) {
-      alert("Incorrect username or Password. Try Again.")
+      alert('Incorrect username or Password. Try Again.');
     }
+  };
+
+  const backHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setLoginState("")
   };
 
   return (
@@ -70,12 +74,11 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
           ))}
         {loginState === 'Login' && (
           <div className="login-col">
-            <h1>Login:</h1>
             <div>
               <p>Email:</p>
               <input
                 type="text"
-                className="form-control"
+                className="login-inputs"
                 id="emailLoginInput"
                 placeholder="Please Enter Your Email"
                 ref={emailInputRef}
@@ -83,23 +86,27 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
               <p>Password: </p>
               <input
                 type="password"
-                className="form-control"
+                className="login-inputs"
                 id="passwordLoginInput"
                 placeholder="Please Enter Your Password"
                 ref={passwordInputRef}
               />
             </div>
-            <LoginButton onClick={loginHandler} typeName="Login" />
+            <div className="logintitle">
+              {' '}
+              <LoginButton onClick={loginHandler} typeName="Login" />
+              <br />
+              <LoginButton onClick={backHandler} typeName="Back" />
+            </div>
           </div>
         )}
         {loginState === 'Register' && (
           <div>
-            <h1>Register:</h1>
             <div>
               <p>Store Name:</p>
               <input
                 type="text"
-                className="form-control"
+                className="login-inputs"
                 id="storeInput"
                 placeholder="Please Enter Store Name"
                 ref={storeInputRef}
@@ -107,7 +114,7 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
               <p>Username:</p>
               <input
                 type="text"
-                className="form-control"
+                className="login-inputs"
                 id="userInput"
                 placeholder="Please Enter User Name"
                 ref={userInputRef}
@@ -115,7 +122,7 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
               <p>Email:</p>
               <input
                 type="email"
-                className="form-control"
+                className="login-inputs"
                 id="emailInput"
                 placeholder="Please Enter Your Email"
                 ref={regEmailRef}
@@ -123,13 +130,18 @@ const LoginContainer: React.FC<LoginProps> = (Props: LoginProps) => {
               <p>Password: (8-16 characters) </p>
               <input
                 type="password"
-                className="form-control"
+                className="login-inputs"
                 id="passwordInput"
                 placeholder="Please Enter Your Password"
                 ref={regPasswordRef}
               />
             </div>
-            <LoginButton onClick={registerHandler} typeName="Set Up Store" />
+            <div className="logintitle">
+              {' '}
+              <LoginButton onClick={registerHandler} typeName="Register" />
+              <br />
+              <LoginButton onClick={backHandler} typeName="Back" />
+            </div>
           </div>
         )}
       </div>

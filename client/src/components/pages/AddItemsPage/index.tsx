@@ -22,9 +22,8 @@ const AddItemsPage: React.FC = () => {
       price: priceRef.current?.value,
     };
     try {
-      console.log(body)
       const newItem = await axios.post('/product', body);
-      console.log(newItem);
+      alert("Item added to stock!")
     } catch (error) {
       console.error(error);
     }

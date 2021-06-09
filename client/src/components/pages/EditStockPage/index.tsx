@@ -74,6 +74,7 @@ const EditStockPage: React.FC = () => {
             <React.Fragment>
               {searchState.map((product: IProduct) => (
                 <EditProduct
+                key={product.product_id}
                 cost={product.cost}
                 description={product.description}
                   product_id={product.product_id}

@@ -1,5 +1,5 @@
 /* eslint-disable radix */
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Button } from 'react-bulma-components';
 import './style.scss';
 import axios from 'axios';
@@ -10,11 +10,10 @@ import ModalContext from '../../context/ModalContext';
 
 const SalesDocket: React.FC = () => {
   const { totalState, saleState, setProducts, setTotal, discountState, setDiscount } = useContext<SaleModel>(SaleContext);
-  const { isOpen, setOpen } = useContext(ModalContext);
+  const { setOpen } = useContext(ModalContext);
   const gstRef = useRef<HTMLInputElement>(null);
   const totalRef = useRef<HTMLInputElement>(null);
   const discountRef = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
 
   const discountHandler = () => {
     if (discountRef.current) {
@@ -24,13 +23,21 @@ const SalesDocket: React.FC = () => {
 
   const cancelHandler = (event: React.MouseEvent) => {
     event.preventDefault();
-    setProducts([]);
-    setTotal(0);
+    if(saleState.length > 0) {
+      setProducts([]);
+      setTotal(0);
+      alert("Order Cancelled!")
+    }
   }
 
   const stripeHandler = (event: React.MouseEvent) => {
     event.preventDefault();
-    setOpen(true)
+    if (totalState !== 0) {
+      setOpen(true)
+    } else {
+      alert("Transaction is empty!")
+    }
+
   }
 
   const transactionHandler = async (event: React.MouseEvent) => {
@@ -40,9 +47,20 @@ const SalesDocket: React.FC = () => {
       discount: discountState,
       stock: saleState
     }
-    await axios.post("/transaction/", newTransactionBody);
-    setProducts([]);
-    setTotal(0);
+    try {
+      if(totalState !== 0) {
+        await axios.post("/transaction/", newTransactionBody);
+        setProducts([]);
+        setTotal(0);
+        alert("Transaction Successful!")
+      } else {
+        throw new Error
+      }
+
+    } catch (error) {
+      alert("Transaction failed!")
+    }
+
   }
 
 
@@ -63,14 +81,6 @@ const SalesDocket: React.FC = () => {
               defaultValue={0}
               className="total-form pay-form"
               ref={discountRef}
-            />
-          </div>
-          <div className="payment-row">
-            <p>Email</p>
-            <input
-              type="email"
-              className="total-form pay-form"
-              ref={emailRef}
             />
           </div>
           <div className="payment-row">

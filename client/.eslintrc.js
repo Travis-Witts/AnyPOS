@@ -42,6 +42,7 @@ module.exports = {
     '@typescript-eslint/restrict-plus-operands': 'off',
     'no-void': 'off',
     'no-alert': 'off',
+    'no-console': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',

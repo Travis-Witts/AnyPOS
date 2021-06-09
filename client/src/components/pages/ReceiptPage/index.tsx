@@ -49,7 +49,7 @@ const ReceiptPage: React.FC = () => {
             ))}{' '}
           </React.Fragment>
         ) : (
-          <h4 className="col-edit-price">No Products to display.</h4>
+          <h4 className="col-edit-cost">No Receipts to display.</h4>
         )}
       </div>
     </div>

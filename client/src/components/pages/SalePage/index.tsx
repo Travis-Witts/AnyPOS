@@ -67,7 +67,7 @@ const Sale: React.FC = () => {
           </div>
           <div className="main">
             <div className="item-row">
-              {searchState.length && searchState.map(
+              {searchState.length ? searchState.map(
                 ({ name, cost, price, quantity, product_id }: newSaleProduct) => (
                   <ProductCard
                     name={name}
@@ -78,7 +78,7 @@ const Sale: React.FC = () => {
                     key={product_id}
                   />
                 ),
-              )}
+              ) : <div />}
             </div>
           </div>
           <SalesDocket />

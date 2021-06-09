@@ -1,4 +1,3 @@
-/* eslint-disable prefer-const */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
@@ -10,10 +9,9 @@ const DailySalesPage: React.FC = () => {
   const [costState, setCostState] = useState(0);
   const [gpState, setGpState] = useState('');
   const [profitState, setProfitState] = useState(0);
-  const [taxState, setTaxState] = useState(0);
+  const [taxState, setTaxState] = useState('');
 
   const getDailySalesTotal = async () => {
-    console.log('hello');
     const dailySales: any = await axios.get<any>('/transaction');
     setDailyState(dailySales.data.totalPrice);
     setCostState(dailySales.data.totalCost);
@@ -24,14 +22,14 @@ const DailySalesPage: React.FC = () => {
       ).toFixed(2),
     );
     setProfitState(dailySales.data.totalPrice - dailySales.data.totalCost);
-    setTaxState(dailySales.data.totalPrice * 0.1);
+    setTaxState((dailySales.data.totalPrice * 0.1).toFixed(2));
   };
   useEffect(() => {
     void getDailySalesTotal();
   }, []);
 
   return (
-    <div className="add-item-container">
+    <div className="daily-sales-container add-item-container">
       <div className="add-item-header">Daily Sales Analysis</div>
       <NavLink exact to="/profile" className="edit-back-arrow">
         <Arrow className="back-arrow" />

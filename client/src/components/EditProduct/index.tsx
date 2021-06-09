@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import axios from 'axios';
 import React, { useRef, useState, useEffect, useContext } from 'react';
 import './style.scss';
@@ -28,20 +27,32 @@ const EditProduct: React.FC<IProduct> = ({
         id: product_id,
       },
     };
-    await axios.delete('/product', config);
-    const newProducts = await axios.get('/product')
-    setEditProducts(newProducts.data)
-    alert(`${name} has been deleted successfully!`)
+    try {
+      await axios.delete('/product', config);
+      const newProducts = await axios.get('/product')
+      setEditProducts(newProducts.data)
+      alert("Item has been deleted successfully!")
+    } catch (error) {
+      console.log(error);
+      alert("Item failed to delete!")
+    }
+
   };
   const saveHandler = async () => {
-    await axios.put('/product', {
-      id: product_id,
-      value: productPriceRef.current?.value,
-      quantity: productQuantityRef.current?.value,
-    });
-    const newProducts = await axios.get('/product')
-    setEditProducts(newProducts.data)
-    alert(`${name} has been edited successfully!`)
+    try {
+      await axios.put('/product', {
+        id: product_id,
+        value: productPriceRef.current?.value,
+        quantity: productQuantityRef.current?.value,
+      });
+      const newProducts = await axios.get('/product')
+      setEditProducts(newProducts.data)
+      alert("Item has been edited successfully!")
+    } catch (error) {
+      console.log(error);
+      alert("Item editing failed!")
+    }
+
   };
 
   useEffect(() => {

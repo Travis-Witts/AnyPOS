@@ -29,6 +29,7 @@
 // Buttons
 
 .login-row {
+  color: $text-dark;
   position: relative;
   top: 50px;
   display: flex;
@@ -36,13 +37,12 @@
   align-items: center;
 }
 
-.btns {
-  color: $text-primary;
-  background-color:transparent;
-  width: 15rem;
-  height: 2rem;
-  cursor: pointer;
-  border-radius: 20px;
+.logintitle {
+  display:flex;
+  flex-direction: column;
+  float:left;
 }
 
-
+.login-inputs {
+  width: 100%;
+}
