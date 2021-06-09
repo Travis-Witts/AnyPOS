@@ -75,3 +75,10 @@ export type ModalModel = {
   isOpen: boolean;
   setOpen: any
 }
+
+export type IReceipt = {
+  transaction_id: string;
+  total: number;
+  discount: number;
+  createdAt: string;
+}

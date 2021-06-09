@@ -15,6 +15,7 @@ import EditStorePage from './components/pages/EditStorePage';
 import AddItemsPage from './components/pages/AddItemsPage';
 import EditStockPage from './components/pages/EditStockPage';
 import DailySalesPage from './components/pages/DailySalesPage';
+import ReceiptPage from './components/pages/ReceiptPage';
 
 const App: React.FC = () => {
   const [userIdLogin, setLoggedIn] = useState('');
@@ -75,7 +76,9 @@ const App: React.FC = () => {
               <MobileDocketPage />
             </Route>
 
-            <Route exact path="/receipt"></Route>
+            <Route exact path="/receipts">
+              <ReceiptPage />
+            </Route>
 
             <Route exact path="/editstore">
             <EditStorePage />

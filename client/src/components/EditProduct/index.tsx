@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import axios from 'axios';
 import React, { useRef, useState, useEffect, useContext } from 'react';
 import './style.scss';
@@ -30,6 +31,7 @@ const EditProduct: React.FC<IProduct> = ({
     await axios.delete('/product', config);
     const newProducts = await axios.get('/product')
     setEditProducts(newProducts.data)
+    alert(`${name} has been deleted successfully!`)
   };
   const saveHandler = async () => {
     await axios.put('/product', {
@@ -39,6 +41,7 @@ const EditProduct: React.FC<IProduct> = ({
     });
     const newProducts = await axios.get('/product')
     setEditProducts(newProducts.data)
+    alert(`${name} has been edited successfully!`)
   };
 
   useEffect(() => {

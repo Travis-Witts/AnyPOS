@@ -68,7 +68,8 @@ const StripeContainer: React.FC = () => {
     console.log(result);
     if (result.error) {
       console.log(result.error.message);
-    }
+      alert("Payment error")
+    }else {
     const newTransactionBody = {
         total: totalState,
         discount: discountState,
@@ -79,6 +80,8 @@ const StripeContainer: React.FC = () => {
       setTotal(0);
       setDiscount(0);
       setOpen(false)
+      alert ("Payment processed!")
+    }
   };
 
   return (

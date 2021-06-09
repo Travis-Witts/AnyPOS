@@ -7,6 +7,9 @@ router.post("/", TransactionController.createTransaction)
 // Get All Daily
 router.get("/", TransactionController.getAllDaily);
 
+// Get All Transactions
+router.get("/all", TransactionController.getAll)
+
 // Get One Transaction
 router.get("/:id", TransactionController.getOne);
 
