@@ -33,13 +33,25 @@ A Mobile responsive react web-application designed for businesses of all sizes t
 
 ## Links:
 
-1. Deployed :  [Here](https://fast-peak-90865.herokuapp.com/)
+1. Deployed :  [Here](https://anyPOS.herokuapp.com/)
 
 2. GitHub repo:  [Here](https://github.com/Travis-Witts/AnyPOS)
 ---
 
 ## Screenshots of the app:
-Desktop version:
+  Desktop version:
+
+![Sale](./assets/sale.png)
+![Editing Page](./assets/edit.png)
+![Profile Page](./assets/profile.png)
+
+Mobile version:
+
+  
+![Sale](./assets/sale-mobile.png)
+![Products](./assets/products-mobile.png)
+
+    
 
 
 
