@@ -27,6 +27,7 @@ A Mobile responsive react web-application designed for businesses of all sizes t
 - Axios
 - BootStrap
 - Figma
+- Stripe
 
 ---
 
